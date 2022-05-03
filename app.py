@@ -12,5 +12,6 @@ st.title("Movie Reco")  # add a title
 #answ = st.multiselect('Votre film préféré', df.title)
 ans = st.selectbox ('Votre film préféré', df.title, index=3623)
 
-st.image(df.poster_url[df.title==ans], width = 400)
+st.image("https://www.themoviedb.org/t/p/original/63Ol9NX5E1OEsH7CHivNEvJMdky.jpg", width=400)
+#st.image(df.poster_url[df.title==ans], width = 400)
 
