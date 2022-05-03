@@ -27,16 +27,13 @@ def test(answ):
 
        distanceKNN = NearestNeighbors(n_neighbors=6).fit(X_scaled)
 
-       try:
-              predict = distanceKNN.kneighbors(X_scaled[imdb.title.str.lower() == input().lower()]) #Mettre le input en regex
-              stop = 0
-       except ValueError:
-              print("Le film n'est pas dans la séléction.")
-              stop = 1
+       predict = distanceKNN.kneighbors(X_scaled[imdb.title.str.lower() == answ]) #Mettre le input en regex
 
-              newFilm = pd.DataFrame(columns = imdb.columns) 
+       newFilm = pd.DataFrame(columns = imdb.columns) 
        for i in range(6):
               if stop == 1: break
               newFilm = newFilm.append(imdb.iloc[predict[1][0][i],:])
               #if i !=0 : print(np.array(newFilm.title)[i]) # Affiche que le nom des films
-       newFilm #Debug
+              return newFilm #Debug
+
+st.write(newFilm)
