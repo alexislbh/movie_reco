@@ -44,3 +44,17 @@ def knn_reco(ans):
   return newFilm #Debug
                                             
 st.write(knn_reco(ans))
+
+fig = plt.figure(figsize=(16, 10))
+rows = 2
+columns = 3
+compteur = 1
+for i in range(1,6):
+  if pd.isna(img_ans.values[i]) == False:
+    st.image(img_ans.values[i], width = 200)
+  else:
+    st.image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 200)
+  fig.add_subplot(rows, columns, compteur) # Preparing subplots for better display
+  plt.title(image.title[i]) # Assigning titles
+  plt.axis('off') # Removing borders between sub-arrays
+  compteur += 1
