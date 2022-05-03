@@ -1,20 +1,14 @@
-from flask import Flask, request, render_template
 import pandas as pd
 import streamlit as st
 
 st.title('Uber pickups in NYC')
   
-app = Flask(__name__)
-
 imdb = pd.read_csv('imdb_movie.zip')
 
-@app.route("/", methods=["POST", "GET"])
-def home():
-    if request.method == "GET":
-        languages = imdb['title']
-          
-        return render_template("index.html", languages=languages)
-  
-  
-if __name__ == '__main__':
-    app.run(debug=True)
+DATA_URL = ('https://github.com/Pilouliz/movie_reco/blob/main/imdb_movie.zip')
+
+def load_data(nrows):
+    data = pd.read_csv(DATA_URL, nrows=nrows)
+    lowercase = lambda x: str(x).lower()
+    data.rename(lowercase, axis='columns', inplace=True)
+    return data
