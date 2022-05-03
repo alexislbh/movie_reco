@@ -8,8 +8,12 @@ st.title('Movie reco')
 #st.dataframe(imdb)
 
 df = pd.DataFrame({
-  'first column': [1, 2, 3, 4],
-  'second column': [10, 20, 30, 40]
-})
+    'first column': [1, 2, 3, 4],
+    'second column': [10, 20, 30, 40]
+    })
 
-df
+option = st.selectbox(
+    'Which number do you like best?',
+     df['first column'])
+
+'You selected: ', option
