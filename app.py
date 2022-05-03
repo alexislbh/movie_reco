@@ -11,6 +11,6 @@ st.title("Hello world!")  # add a title
 
 st.text_input('ecrire ici')
 
-st.multiselect('choose columns', df.columns)
+st.multiselect('choose columns', df.title)
 
 
