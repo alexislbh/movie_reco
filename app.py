@@ -38,10 +38,12 @@ def knn_reco(ans):
 
   newFilm = pd.DataFrame(columns = imdb.columns) 
 
-  for i in range(6):
-    newFilm.append(imdb.iloc[predict[1][0][i],:])
+  #for i in range(6):
+  #  newFilm = newFilm.append(imdb.iloc[predict[1][0][i],:])
+  newFilm = [imdb.iloc[predict[1][0][i],:] for i in range(6)]
   return newFilm
 
+  
 
 newFilm = knn_reco(ans)
 st.write(newFilm)
