@@ -9,8 +9,6 @@ df = pd.read_csv("./imdb_movie.csv")  # read a CSV file inside the 'data" folder
 st.title("Hello world!")  # add a title
 #st.write(df)  # visualize my dataframe in the Streamlit app
 
-st.text_input('ecrire ici')
-
-st.multiselect('choose columns', df.title)
+st.multiselect('Votre film préféré', df.title)
 
 
