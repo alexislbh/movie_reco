@@ -1,6 +1,8 @@
 from flask import Flask, request, render_template
 import pandas as pd
+import streamlit as st
 
+st.title('Uber pickups in NYC')
   
 app = Flask(__name__)
 
