@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
-import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import NearestNeighbors
 from PIL import Image 
@@ -46,7 +45,7 @@ def knn_reco(ans):
                                             
 st.write(knn_reco(ans))
 
-fig = plt.figure(figsize=(16, 10))
+st.pyplot(figsize=(16, 10))
 rows = 2
 columns = 3
 compteur = 1
