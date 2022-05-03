@@ -11,7 +11,7 @@ st.title("Movie Reco")  # add a title
 
 answ = st.multiselect('Votre film préféré', df.title)
 
-def test(answ)
+def test(answ):
        X = imdb[['isAdult', 'startYear', 'runtimeMinutes', 'averageRating', 'numVotes', 'Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery', 'News', 'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'War', 'Western','original_language']]
        scale = StandardScaler().fit(X) 
        X_scaled = scale.transform(X)
