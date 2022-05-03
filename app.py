@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 import streamlit as st
+import cv2
 
 
 df = pd.read_csv("./imdb_movie.csv")  # read a CSV file inside the 'data" folder next to 'app.py'
@@ -11,8 +13,4 @@ st.title("Movie Reco")  # add a title
 
 #answ = st.multiselect('Votre film préféré', df.title)
 ans = st.selectbox ('Votre film préféré', df.title, index=3623)
-
-
-
-
 
