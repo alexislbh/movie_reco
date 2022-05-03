@@ -5,7 +5,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import NearestNeighbors
 from PIL import Image 
 
-imdb = pd.read_csv("./imdb_movie.csv") 
+imdb = pd.read_csv("./imdb_movie.csv")
+imdb['original_language'] = pd.factorize(imdb.original_language)[0]
 
 st.title("Movie Reco") 
 
