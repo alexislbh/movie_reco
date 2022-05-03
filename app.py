@@ -45,10 +45,12 @@ def knn_reco(ans):
 newFilm = knn_reco(ans)
 st.write(newFilm)
 
-for i in range(1,6):
-  if pd.isna(newFilm.poster_url.values[i]) == False:
-    st.subheader(newFilm.title.values[i])
-    st.image(newFilm.poster_url.values[i], width = 200)
+for num in range(1,6):
+  if pd.isna(newFilm.poster_url.values[num]) == False:
+    st.subheader(newFilm.title.values[num])
+    st.image(newFilm.poster_url.values[num], width = 200)
   else:
-    st.subheader(newFilm.title.values[i])
+    st.subheader(newFilm.title.values[num])
     st.image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 200)
+
+st.image(http://img.omdbapi.com/?apikey=[st.secrets['key']]&i=tt0052646, width = 200)
