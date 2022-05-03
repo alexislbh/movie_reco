@@ -3,12 +3,12 @@ import numpy as np
 import streamlit as st
 from PIL import Image 
 
-df = pd.read_csv("./imdb_movie.csv") 
+imdb = pd.read_csv("./imdb_movie.csv") 
 
 st.title("Movie Reco") 
 
-ans = st.selectbox ('Votre film préféré', df.title, index=6040)
-img_ans = df.poster_url[df.title==ans]
+ans = st.selectbox ('Votre film préféré', imdb.title, index=6040)
+img_ans = imdb.poster_url[imdb.title==ans]
 if pd.isna(img_ans.values[0]) == False:
   st.image(img_ans.values[0], width = 200)
 else:
