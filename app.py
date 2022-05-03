@@ -46,7 +46,7 @@ def knn_reco(ans):
 st.write(knn_reco(ans))
 
 for i in range(1,6):
-  img_ans = newFilm.poster_url[newFilm.title[i]]
+  img_ans = newFilm.poster_url[i]
   if pd.isna(img_ans.values[0]) == False:
     st.image(img_ans.values[0], width = 200)
   else:
