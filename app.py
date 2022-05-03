@@ -47,8 +47,8 @@ st.write(newFilm)
 
 for i in range(1,6):
   if pd.isna(newFilm.poster_url.values[i]) == False:
-    st.header(newFilm.title.values[i])
+    st.subheader(newFilm.title.values[i])
     st.image(newFilm.poster_url.values[i], width = 200)
   else:
-    st.header(newFilm.title.values[i])
+    st.subheader(newFilm.title.values[i])
     st.image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 200)
