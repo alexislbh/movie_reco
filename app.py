@@ -47,7 +47,7 @@ st.write(knn_reco(ans))
 
 for i in range(1,6):
   img_ans = newFilm.poster_url[newFilm.title[i]]
-    if pd.isna(img_ans.values[0]) == False:
-      st.image(img_ans.values[0], width = 200)
-    else:
-      st.image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 200)
+  if pd.isna(img_ans.values[0]) == False:
+    st.image(img_ans.values[0], width = 200)
+  else:
+    st.image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 200)
