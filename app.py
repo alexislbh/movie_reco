@@ -46,11 +46,12 @@ newFilm = knn_reco(ans)
 st.write(newFilm)
 
 for num in range(1,6):
+  cols = st.columns(5)
   if pd.isna(newFilm.poster_url.values[num]) == False:
-    st.subheader(newFilm.title.values[num])
-    st.image(newFilm.poster_url.values[num], width = 200)
+    cols[i].subheader(newFilm.title.values[num])
+    cols[i].image(newFilm.poster_url.values[num], width = 200)
   else:
-    st.subheader(newFilm.title.values[num])
-    st.image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 200)
+    cols[i].subheader(newFilm.title.values[num])
+    cols[i].image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 200)
 skey = st.secrets["key"]
 st.image('http://img.omdbapi.com/?apikey=st.secrets["key"]&i=tt0052646', width = 200)
