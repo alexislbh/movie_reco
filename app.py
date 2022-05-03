@@ -9,7 +9,9 @@ st.title("Movie Reco")
 
 ans = st.selectbox ('Votre film préféré', df.title, index=6040)
 img_ans = df.poster_url[df.title==ans]
-st.image(img_ans.values[0], width = 200)
-st.image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 200)
+if pd.isna == False:
+  st.image(img_ans.values[0], width = 200)
+else:
+  st.image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 200)
 
 
