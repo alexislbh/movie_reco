@@ -42,8 +42,9 @@ def knn_reco(ans):
     newFilm = newFilm.append(imdb.iloc[predict[1][0][i],:])
     #if i !=0 : print(np.array(newFilm.title)[i]) # Affiche que le nom des films
   return newFilm #Debug
-                                            
-st.write(knn_reco(ans))
+
+newFilm = knn_reco(ans)
+st.write(newFilm)
 
 for i in range(1,6):
   if pd.isna(newFilm.poster_url.values[i]) == False:
