@@ -9,9 +9,9 @@ df = pd.read_csv("./imdb_movie.csv")  # read a CSV file inside the 'data" folder
 st.title("Movie Reco")  # add a title
 #st.write(df)  # visualize my dataframe in the Streamlit app
 
-#answ = st.multiselect('Votre film préféré', df.title)
+st.image(df.poster_url[df.title==ans], width = 400)
 ans = st.selectbox ('Votre film préféré', df.title, index=6040)
 
 st.image("https://www.themoviedb.org/t/p/original/63Ol9NX5E1OEsH7CHivNEvJMdky.jpg", width=200)
-#st.image(df.poster_url[df.title==ans], width = 400)
+
 
