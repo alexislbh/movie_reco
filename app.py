@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import NearestNeighbors
 from PIL import Image 
 
 imdb = pd.read_csv("./imdb_movie.csv") 
