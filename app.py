@@ -11,4 +11,10 @@ st.title("Hello world!")  # add a title
 
 st.text_input('ecrire ici')
 
+@app.route("/", methods=["POST", "GET"])
+def home():
+    if request.method == "GET":
+        languages = imdb['title']
+          
+        return render_template("index.html", languages=languages)
 
