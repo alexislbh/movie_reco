@@ -32,7 +32,7 @@ def knn_reco(ans):
 
   distanceKNN = NearestNeighbors(n_neighbors=6).fit(X_scaled)
 
-  predict = distanceKNN.kneighbors(X_scaled[imdb.title == ans)
+  predict = distanceKNN.kneighbors(X_scaled[imdb.title == ans])
 
   newFilm = pd.DataFrame(columns = imdb.columns) 
 
