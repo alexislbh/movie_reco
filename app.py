@@ -53,4 +53,4 @@ for num in range(1,6):
     st.subheader(newFilm.title.values[num])
     st.image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 200)
 skey = st.secrets["key"]
-st.image('http://img.omdbapi.com/?i=tt0052646', width = 200)
+st.image('http://img.omdbapi.com/?apikey=[skey]&i=tt0052646', width = 200)
