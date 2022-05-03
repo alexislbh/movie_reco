@@ -44,7 +44,7 @@ newFilm = knn_reco(ans)
 st.write(newFilm)
 
 for num in range(1,6):
-  cols = st.columns(5)
+  cols = st.columns(3)
   if pd.isna(newFilm.poster_url.values[num]) == False:
     cols[num-1].subheader(newFilm.title.values[num])
     cols[num-1].image(newFilm.poster_url.values[num], width = 100)
