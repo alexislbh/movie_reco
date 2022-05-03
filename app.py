@@ -20,7 +20,6 @@ def knn_reco(ans):
 
   scale = StandardScaler().fit(X) 
   X_scaled = scale.transform(X)
-  X_scaled = scale.transform(X)
 
   x_scaled = pd.DataFrame(X_scaled, columns=X.columns)
 
