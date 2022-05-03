@@ -37,4 +37,3 @@ def test(answ):
               #if i !=0 : print(np.array(newFilm.title)[i]) # Affiche que le nom des films
               return newFilm #Debug
 
-#st.write(newFilm)
