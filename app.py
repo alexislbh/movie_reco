@@ -7,7 +7,7 @@ st.title('Movie reco')
 
 @st.cache
 def load_data():
-   imdb = pd.read_csv('https://drive.google.com/file/d/1-u3h1PuOtF1xxh1po3N_wUhpU3UeUZ-B/view?usp=sharing')
+   imdb = pd.read_csv('Pilouliz-data/imdb_movie.csv')
    return imdb
 
 df = load_data()
