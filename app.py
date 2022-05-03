@@ -1,42 +1,48 @@
 import pandas as pd
 import numpy as np
-import streamlit as st
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import NearestNeighbors
+
 
 st.title('Movie reco')
 
-#imdb = pd.read_csv('https://github.com/Pilouliz/movie_reco/blob/main/imdb_movie.csv')
+imdb = pd.read_csv('https://github.com/Pilouliz/movie_reco/blob/main/imdb_movie.csv')
 
 #st.dataframe(imdb)
 
 st.title('Uber pickups in NYC')
 
-DATE_COLUMN = 'date/time'
-DATA_URL = ('https://s3-us-west-2.amazonaws.com/'
-            'streamlit-demo-data/uber-raw-data-sep14.csv.gz')
+X = imdb[['isAdult', 'startYear', 'runtimeMinutes',
+       'averageRating', 'numVotes', 'Action', 'Adventure',
+       'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama',
+       'Family', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery',
+       'News', 'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'War', 'Western','original_language']]
 
-@st.cache
-def load_data(nrows):
-    data = pd.read_csv(DATA_URL, nrows=nrows)
-    lowercase = lambda x: str(x).lower()
-    data.rename(lowercase, axis='columns', inplace=True)
-    data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
-    return data
+scale = StandardScaler().fit(X) 
+X_scaled = scale.transform(X)
+X_scaled = scale.transform(X)
 
-data_load_state = st.text('Loading data...')
-data = load_data(10000)
-data_load_state.text("Done! (using st.cache)")
+x_scaled = pd.DataFrame(X_scaled, columns=X.columns)
 
-if st.checkbox('Show raw data'):
-    st.subheader('Raw data')
-    st.write(data)
+x_scaled['numVotes'] = x_scaled.numVotes * 1.5
+x_scaled['startYear'] = x_scaled.startYear * 1.2
+x_scaled.iloc[:,5:] = x_scaled.iloc[:,5:] * 1.2
+x_scaled['averageRating'] = x_scaled.averageRating * 0.8
+x_scaled['original_language'] = x_scaled.original_language * 2
 
-st.subheader('Number of pickups by hour')
-hist_values = np.histogram(data[DATE_COLUMN].dt.hour, bins=24, range=(0,24))[0]
-st.bar_chart(hist_values)
+distanceKNN = NearestNeighbors(n_neighbors=6).fit(X_scaled)
 
-# Some number in the range 0-23
-hour_to_filter = st.slider('hour', 0, 23, 17)
-filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
+try:
+    predict = distanceKNN.kneighbors(X_scaled[imdb.title.str.lower() == input().lower()]) #Mettre le input en regex
+    stop = 0
+except ValueError:
+    print("Le film n'est pas dans la séléction.")
+    stop = 1
 
-st.subheader('Map of all pickups at %s:00' % hour_to_filter)
-st.map(filtered_data)
+newFilm = pd.DataFrame(columns = imdb.columns) 
+
+for i in range(6):
+    if stop == 1: break
+    newFilm = newFilm.append(imdb.iloc[predict[1][0][i],:])
+    #if i !=0 : print(np.array(newFilm.title)[i]) # Affiche que le nom des films
+newFilm #Debug
