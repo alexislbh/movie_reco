@@ -10,7 +10,7 @@ st.title("Movie Reco")  # add a title
 #st.write(df)  # visualize my dataframe in the Streamlit app
 
 #answ = st.multiselect('Votre film préféré', df.title)
-ans = st.selectbox ('Votre film préféré',label ('test'), df.title)
+ans = st.selectbox ('Votre film préféré',label (''),options (df.title))
 
 def test(answ):
        X = imdb[['isAdult', 'startYear', 'runtimeMinutes', 'averageRating', 'numVotes', 'Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery', 'News', 'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'War', 'Western','original_language']]
