@@ -39,9 +39,9 @@ def knn_reco(ans):
   newFilm = pd.DataFrame(columns = imdb.columns) 
 
   for i in range(6):
-    newFilm = newFilm.append(imdb.iloc[predict[1][0][i],:])
-    #if i !=0 : print(np.array(newFilm.title)[i]) # Affiche que le nom des films
-  return newFilm #Debug
+    newFilm.append(imdb.iloc[predict[1][0][i],:])
+  return newFilm
+
 
 newFilm = knn_reco(ans)
 st.write(newFilm)
