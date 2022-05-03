@@ -3,7 +3,7 @@ import numpy as np
 import streamlit as st
 from PIL import Image 
 
-img = Image.open("streamlit.png") 
+img = https://www.themoviedb.org/t/p/original/63Ol9NX5E1OEsH7CHivNEvJMdky.jpg
   
 st.image(img, width=200) 
 
