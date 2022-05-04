@@ -35,7 +35,7 @@ with st.sidebar:
   cols1, cols2, cols3, cols4, cols5 = st.columns([1, 3, 1,3,1])
   cols2.metric(label="Rating", value=imdb.averageRating[imdb.title==ans].values[0])
   cols4.metric(label='Year', value=int(imdb.startYear[imdb.title==ans].values[0]))
-  st.write(imdb.tconst[imdb.title==ans].value[0])
+  st.write(imdb.tconst[imdb.title==ans].values[0])
   
 
 #KNN
