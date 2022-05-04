@@ -64,14 +64,14 @@ for steps in range(step_range):
   next_line = steps * 5
   cols = st.columns(5)
   for num in range(1 + next_line,6 + next_line):
-    cols[(num-1) - next_line].write(newFilm.title.values[num])
+    
     if num == reco_val:
       break
     if pd.isna(newFilm.poster_url.values[num]) == False:
       cols[(num-1) - next_line].image(newFilm.poster_url.values[num], width = 100)
     else:
       cols[(num-1) - next_line].image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 100)
-    
+    cols[(num-1) - next_line].write(newFilm.title.values[num])
     
 skey = st.secrets["key"]
 st.image('http://img.omdbapi.com/?apikey=st.secrets["key"]&i=tt0052646', width = 150)
