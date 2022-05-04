@@ -52,7 +52,7 @@ def knn_reco(ans):
 newFilm = knn_reco(ans)
 st.write(newFilm)
 
-step_range = [slider_val//5 if slider_val%5==0 else slider_val//5 +1]
+step_range = sum([slider_val//5 if slider_val%5==0 else slider_val//5 +1])
 
 for steps in range(step_range):
   cols = st.columns(slider_val)
