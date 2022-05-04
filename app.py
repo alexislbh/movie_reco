@@ -79,6 +79,6 @@ for steps in range(step_range):
       cols[(num-1) - next_line].image(newFilm.poster_url.values[num], width = 150)
     else:
       cols[(num-1) - next_line].image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 150)
-    cols[(num-1) - next_line].write(newFilm.title.values[num])
+    cols[(num-1) - next_line].markdown("<p style='text-align: center'>{}</p>".format(newFilm.title.values[num], unsafe_allow_html=True)
     cols[(num-1) - next_line].markdown("<p style='text-align: center'><b>{}</b><font color='black'> - - - - </font><i>{}</i></p>".format(newFilm.averageRating.values[num], newFilm.startYear.values[num]), unsafe_allow_html=True)
 
