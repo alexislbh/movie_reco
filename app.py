@@ -83,10 +83,11 @@ for steps in range(step_range):
   for num in range(1 + next_line,6 + next_line):
     if num == reco_val:
       break
-    if pd.isna(newFilm.poster_url.values[num]) == False:
-      cols[(num-1) - next_line].image(newFilm.poster_url.values[num], width = 150)
-    else:
-      cols[(num-1) - next_line].image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 150)
+    st.image(get_OMDB(imdb.tconst[imdb.title==ans].values[0])['Poster'])
+    #if pd.isna(newFilm.poster_url.values[num]) == False:
+    #  cols[(num-1) - next_line].image(newFilm.poster_url.values[num], width = 150)
+    #else:
+    #  cols[(num-1) - next_line].image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 150)
     cols[(num-1) - next_line].markdown("<p style='text-align: center'>{}</p>".format(newFilm.title.values[num]), unsafe_allow_html=True)
     cols[(num-1) - next_line].markdown("<p style='text-align: center'><b>{}</b><font color='black'> - - - - </font><i>{}</i></p>".format(newFilm.averageRating.values[num], newFilm.startYear.values[num]), unsafe_allow_html=True)
 API_KEY = st.secrets["key"]
