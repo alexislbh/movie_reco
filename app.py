@@ -74,6 +74,3 @@ for steps in range(step_range):
     cols1, cols2 = st.columns(2)
     cols1.metric(label="Rating", value=newFilm.averageRating.values[num])
     cols2.metric(label="Year", value=int(newFilm.startYear.values[num])
-    
-#skey = st.secrets["key"]
-#st.image('http://img.omdbapi.com/?apikey=st.secrets["key"]&i=tt0052646', width = 150)
