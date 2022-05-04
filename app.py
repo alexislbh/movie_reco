@@ -11,11 +11,13 @@ imdb['original_language'] = pd.factorize(imdb.original_language)[0]
 st.title("Movie Reco") 
 
 ans = st.selectbox ('Votre film préféré', imdb.title, index=6040)
-img_ans = imdb.poster_url[imdb.title==ans]
-if pd.isna(img_ans.values[0]) == False:
-  st.image(img_ans.values[0], width = 200)
-else:
-  st.image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 200)
+
+with st.sidebar:
+  img_ans = imdb.poster_url[imdb.title==ans]
+  if pd.isna(img_ans.values[0]) == False:
+    st.image(img_ans.values[0], width = 200)
+  else:
+    st.image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 200)
 
 #KNN
 def knn_reco(ans):
