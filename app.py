@@ -56,11 +56,6 @@ def knn_reco(ans):
   distanceKNN = NearestNeighbors(n_neighbors=reco_val).fit(X_scaled)
 
   predict = distanceKNN.kneighbors(X_scaled[imdb.title == ans])
-
-  #newFilm = pd.DataFrame(columns = imdb.columns) 
-
-  #for i in range(slider_val):
-    #newFilm = newFilm.append(imdb.iloc[predict[1][0][i],:])
   
   newFilm = pd.DataFrame([imdb.iloc[predict[1][0][i],:] for i in range(reco_val)],columns = imdb.columns) 
   
@@ -85,5 +80,5 @@ for steps in range(step_range):
     else:
       cols[(num-1) - next_line].image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 150)
     cols[(num-1) - next_line].write(newFilm.title.values[num])
-    cols[(num-1) - next_line].markdown("<p style='text-align: center'><b>{}</b>   -   <i>{}</i></p>".format(newFilm.averageRating.values[num], newFilm.startYear.values[num]), unsafe_allow_html=True)
+    cols[(num-1) - next_line].markdown("<p style='text-align: center'><b>{}</b> - - - - <i>{}</i></p>".format(newFilm.averageRating.values[num], newFilm.startYear.values[num]), unsafe_allow_html=True)
 
