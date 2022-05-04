@@ -86,4 +86,5 @@ API_KEY = st.secrets["key"]
 movieID = 'tt1285016'
 OMDB = requests.get('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + API_KEY).json()
 st.write(OMDB)
+st.write(OMDB['Poster'])
 st.image(OMDB['Poster'])
