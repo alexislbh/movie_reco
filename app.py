@@ -21,9 +21,10 @@ for i in range(len(settings)):
 slider_val = st.slider('Choose your number of recomendation', 1, 15, value=5)
 reco_val = slider_val + 1
 ans = st.selectbox ('Votre film préféré', imdb.title, index=6040)
+st.write(imdb.title[imdb.title==ans].values[0])
 
 with st.sidebar:
-  st.write(imdb.title[imdb.title==ans].values[0])
+  
   img_ans = imdb.poster_url[imdb.title==ans]
   if pd.isna(img_ans.values[0]) == False:
     st.image(img_ans.values[0], width = 200)
