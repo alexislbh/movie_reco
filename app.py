@@ -83,5 +83,5 @@ for steps in range(step_range):
     cols[(num-1) - next_line].markdown("<p style='text-align: center'><b>{}</b><font color='black'> - - - - </font><i>{}</i></p>".format(newFilm.averageRating.values[num], newFilm.startYear.values[num]), unsafe_allow_html=True)
 API_KEY = st.secrets["key"]
 movieID = 'tt1285016'
-st.image('http://www.omdbapi.com/?apikey={}&i=tt1285016'.format(key), width = 200)
+#st.image('http://www.omdbapi.com/?apikey={}&i=tt1285016'.format(key), width = 200)
 st.image('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + API_KEY)
