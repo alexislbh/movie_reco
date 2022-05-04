@@ -58,12 +58,14 @@ step_range = sum([slider_val//5 if slider_val%5==0 else slider_val//5 +1])
 for steps in range(step_range):
   next_line = steps * 5
   cols = st.columns(5)
-  for num in range(1 + next_line,reco_val):
+  for num in range(1 + next_line,6 + next_line):
     if pd.isna(newFilm.poster_url.values[num]) == False:
       cols[(num-1) - next_line].image(newFilm.poster_url.values[num], width = 100)
     else:
       cols[(num-1) - next_line].image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 100)
     cols[(num-1) - next_line].subheader(newFilm.title.values[num])
+    if num == reco_val:
+      break
     
     
 skey = st.secrets["key"]
