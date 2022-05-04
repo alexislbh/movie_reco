@@ -10,7 +10,6 @@ imdb['original_language'] = pd.factorize(imdb.original_language)[0]
 
 st.title("Movie Reco") 
 slider_val = st.slider('Choose your number of recomendation', 1, 15, value=5)
-st.write(slider_val)
 ans = st.selectbox ('Votre film préféré', imdb.title, index=6040)
 
 with st.sidebar:
@@ -35,7 +34,7 @@ def knn_reco(ans):
   x_scaled['averageRating'] = x_scaled.averageRating * 0.8
   x_scaled['original_language'] = x_scaled.original_language * 5
 
-  distanceKNN = NearestNeighbors(n_neighbors=6).fit(X_scaled)
+  distanceKNN = NearestNeighbors(n_neighbors=slider_val).fit(X_scaled)
 
   predict = distanceKNN.kneighbors(X_scaled[imdb.title == ans])
 
