@@ -85,4 +85,5 @@ for steps in range(step_range):
 API_KEY = st.secrets["key"]
 movieID = 'tt1285016'
 OMDB = requests.get('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + API_KEY).json()
-st.image(OMDB['Poster'].item())
+st.write(OMDB)
+st.image(OMDB['Poster'])
