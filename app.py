@@ -3,7 +3,8 @@ import numpy as np
 import streamlit as st
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import NearestNeighbors
-from PIL import Image 
+from PIL import Image
+st.set_page_config(layout="wide")
 
 imdb = pd.read_csv("./imdb_movie.csv")
 imdb['original_language'] = pd.factorize(imdb.original_language)[0]
