@@ -27,7 +27,7 @@ with st.sidebar:
   st.subheader(imdb.title[imdb.title==ans].values[0])
   img_ans = imdb.poster_url[imdb.title==ans]
   if pd.isna(img_ans.values[0]) == False:
-    st.image(img_ans.values[0], width = 200)
+    st.image(img_ans.values[0], use_column_width=True)
   else:
     st.image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 200)
   cols1, cols2 = st.columns(2)
