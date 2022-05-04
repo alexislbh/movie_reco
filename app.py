@@ -39,7 +39,12 @@ def knn_reco(ans):
 
   predict = distanceKNN.kneighbors(X_scaled[imdb.title == ans])
 
-  newFilm = pd.DataFrame([imdb.iloc[predict[1][0][i],:] for i in range(6)],columns = imdb.columns) 
+  newFilm = pd.DataFrame(columns = imdb.columns) 
+
+  for i in range(6):
+    newFilm = newFilm.append(imdb.iloc[predict[1][0][i],:])
+  
+  #newFilm = pd.DataFrame([imdb.iloc[predict[1][0][i],:] for i in range(6)],columns = imdb.columns) 
   
   return newFilm
 
