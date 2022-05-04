@@ -84,4 +84,4 @@ for steps in range(step_range):
 API_KEY = st.secrets["key"]
 movieID = 'tt1285016'
 #st.image('http://www.omdbapi.com/?apikey={}&i=tt1285016'.format(key), width = 200)
-st.write('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + API_KEY)
+st.json('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + API_KEY)
