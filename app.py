@@ -9,7 +9,8 @@ imdb = pd.read_csv("./imdb_movie.csv")
 imdb['original_language'] = pd.factorize(imdb.original_language)[0]
 
 st.title("Movie Reco") 
-slider_val = st.slider('Choose your number of recomendation', 1, 15, value=5) + 1
+slider_val = st.slider('Choose your number of recomendation', 1, 15, value=5)
+reco_val = slider_val + 1
 st.write(slider_val)
 ans = st.selectbox ('Votre film préféré', imdb.title, index=6040)
 
@@ -22,7 +23,7 @@ with st.sidebar:
 
 #KNN
 def knn_reco(ans):
-  global slider_val
+  global reco_val
   X = imdb[['isAdult', 'startYear', 'runtimeMinutes', 'averageRating', 'numVotes', 'Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery', 'News', 'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'War', 'Western','original_language']]
 
   scale = StandardScaler().fit(X) 
@@ -36,7 +37,7 @@ def knn_reco(ans):
   x_scaled['averageRating'] = x_scaled.averageRating * 0.8
   x_scaled['original_language'] = x_scaled.original_language * 5
 
-  distanceKNN = NearestNeighbors(n_neighbors=slider_val).fit(X_scaled)
+  distanceKNN = NearestNeighbors(n_neighbors=reco_val).fit(X_scaled)
 
   predict = distanceKNN.kneighbors(X_scaled[imdb.title == ans])
 
@@ -45,15 +46,16 @@ def knn_reco(ans):
   #for i in range(slider_val):
     #newFilm = newFilm.append(imdb.iloc[predict[1][0][i],:])
   
-  newFilm = pd.DataFrame([imdb.iloc[predict[1][0][i],:] for i in range(slider_val)],columns = imdb.columns) 
+  newFilm = pd.DataFrame([imdb.iloc[predict[1][0][i],:] for i in range(reco_val)],columns = imdb.columns) 
   
   return newFilm
 
 newFilm = knn_reco(ans)
 st.write(newFilm)
 
-cols = st.columns(slider_val-1)
-for num in range(1,slider_val):
+
+cols = st.columns(slider_val)
+for num in range(1,reco_val):
   if pd.isna(newFilm.poster_url.values[num]) == False:
     cols[num-1].image(newFilm.poster_url.values[num], width = 100)
   else:
