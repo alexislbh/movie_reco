@@ -11,6 +11,7 @@ imdb['original_language'] = pd.factorize(imdb.original_language)[0]
 st.title("Movie Reco") 
 
 ans = st.selectbox ('Votre film préféré', imdb.title, index=6040)
+st.selectbox('Pick one', ['cats', 'dogs'])
 
 with st.sidebar:
   img_ans = imdb.poster_url[imdb.title==ans]
