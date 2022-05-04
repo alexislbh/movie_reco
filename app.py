@@ -82,4 +82,4 @@ for steps in range(step_range):
     cols[(num-1) - next_line].markdown("<p style='text-align: center'>{}</p>".format(newFilm.title.values[num]), unsafe_allow_html=True)
     cols[(num-1) - next_line].markdown("<p style='text-align: center'><b>{}</b><font color='black'> - - - - </font><i>{}</i></p>".format(newFilm.averageRating.values[num], newFilm.startYear.values[num]), unsafe_allow_html=True)
 key = st.secrets["key"]
-st.image('http://www.omdbapi.com/?apikey=key&i=tt1285016', width = 200)
+st.image('http://www.omdbapi.com/?apikey='+key+'&i=tt1285016', width = 200)
