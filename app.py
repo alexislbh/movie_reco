@@ -16,8 +16,10 @@ st.title("Movie Reco")
 setting_name = ['Num Vote','Year','Genre','Rating','Region']
 settings =[1.0,1.0,1.0,1.0,3.0]
 
+API_KEY = st.secrets["key"]
+
 def get_OMDB(movieID):
-    OMDB_info = requests.get('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + st.secrets["key"]).json()
+    OMDB_info = requests.get('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + API_KEY).json()
     return OMDB_info
 
 
