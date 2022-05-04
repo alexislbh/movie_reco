@@ -50,7 +50,9 @@ def knn_reco(ans):
   return newFilm
 
 newFilm = knn_reco(ans)
-st.write(newFilm)
+
+expander = st.expander("Data)
+expander.write(newFilm)
 
 step_range = sum([slider_val//5 if slider_val%5==0 else slider_val//5 +1])
 
