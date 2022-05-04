@@ -19,6 +19,8 @@ with st.sidebar:
     st.image(img_ans.values[0], width = 200)
   else:
     st.image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 200)
+  cols = st.columns(3)
+  clos[1].write(imdb.averageRating[imdb.title==ans])
 
 #KNN
 def knn_reco(ans):
