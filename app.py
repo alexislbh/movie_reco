@@ -55,6 +55,7 @@ st.write(newFilm)
 step_range = sum([slider_val//5 if slider_val%5==0 else slider_val//5 +1])
 
 for steps in range(step_range):
+  st.write(steps)
   cols = st.columns(slider_val)
   for num in range(1,reco_val):
     if pd.isna(newFilm.poster_url.values[num]) == False:
