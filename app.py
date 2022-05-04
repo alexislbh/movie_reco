@@ -57,7 +57,7 @@ step_range = sum([slider_val//5 if slider_val%5==0 else slider_val//5 +1])
 
 for steps in range(step_range):
   next_line = steps * 5
-  cols = st.columns(slider_val - next_line)
+  cols = st.columns(5)
   for num in range(1 + next_line,6 + next_line):
     if pd.isna(newFilm.poster_url.values[num]) == False:
       cols[(num-1) - next_line].image(newFilm.poster_url.values[num], width = 100)
