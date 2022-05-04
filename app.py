@@ -11,7 +11,6 @@ imdb['original_language'] = pd.factorize(imdb.original_language)[0]
 st.title("Movie Reco") 
 slider_val = st.slider('Choose your number of recomendation', 1, 15, value=5)
 reco_val = slider_val + 1
-st.write(slider_val)
 ans = st.selectbox ('Votre film préféré', imdb.title, index=6040)
 
 with st.sidebar:
@@ -53,13 +52,15 @@ def knn_reco(ans):
 newFilm = knn_reco(ans)
 st.write(newFilm)
 
-
-cols = st.columns(slider_val)
-for num in range(1,reco_val):
-  if pd.isna(newFilm.poster_url.values[num]) == False:
-    cols[num-1].image(newFilm.poster_url.values[num], width = 100)
-  else:
-    cols[num-1].image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 100)
-  cols[num-1].subheader(newFilm.title.values[num])
+for steps in range(slider_val//5 + 1)
+  cols = st.columns(slider_val)
+  for num in range(1,reco_val):
+    if pd.isna(newFilm.poster_url.values[num]) == False:
+      cols[num-1].image(newFilm.poster_url.values[num], width = 100)
+    else:
+      cols[num-1].image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 100)
+    cols[num-1].subheader(newFilm.title.values[num])
+    
+    
 skey = st.secrets["key"]
 st.image('http://img.omdbapi.com/?apikey=st.secrets["key"]&i=tt0052646', width = 150)
