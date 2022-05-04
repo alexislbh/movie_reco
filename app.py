@@ -33,7 +33,7 @@ with st.sidebar:
   cols1, cols2 = st.columns(2)
   cols1.metric(label="Rating", value=imdb.averageRating[imdb.title==ans].values[0])
   cols1.markdown("<p style='text-align: center'>Rating</p>", unsafe_allow_html=True)
-  cols1.markdown("<h2 style='text-align: center'>{}</h2>".format(imdb.averageRating[imdb.title==ans].values[0]), unsafe_allow_html=True)
+  cols1.markdown("<div style='text-align: center'>{}</div>".format(cols1.metric(label="Rating", value=imdb.averageRating[imdb.title==ans].values[0])), unsafe_allow_html=True)
   cols2.metric(label="Year", value=int(imdb.startYear[imdb.title==ans].values[0]))
   
 
