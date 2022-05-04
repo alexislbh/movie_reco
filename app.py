@@ -9,7 +9,7 @@ imdb = pd.read_csv("./imdb_movie.csv")
 imdb['original_language'] = pd.factorize(imdb.original_language)[0]
 
 st.title("Movie Reco") 
-slider_val = st.slider('Choose your number of recomendation', 1, 15)
+slider_val = st.slider('Choose your number of recomendation', 1, 15, value=5)
 st.write(slider_val)
 ans = st.selectbox ('Votre film préféré', imdb.title, index=6040)
 
