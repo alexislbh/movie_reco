@@ -16,6 +16,10 @@ st.title("Movie Reco")
 setting_name = ['Num Vote','Year','Genre','Rating','Region']
 settings =[1.0,1.0,1.0,1.0,3.0]
 
+API_KEY = st.secrets["key"]
+OMDB = requests.get('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + API_KEY).json()
+
+
 cols = st.columns(len(settings))
 for i in range(len(settings)):
   settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.1)
@@ -27,11 +31,12 @@ ans = st.selectbox ('Votre film préféré', imdb.title, index=6040)
 
 with st.sidebar:
   st.markdown("<h2 style='text-align: center'>{}</h2>".format(imdb.title[imdb.title==ans].values[0]), unsafe_allow_html=True)
-  img_ans = imdb.poster_url[imdb.title==ans]
-  if pd.isna(img_ans.values[0]) == False:
-    st.image(img_ans.values[0], use_column_width=True)
-  else:
-    st.image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 200)
+  movieID = imdb.tconst[imdb.title==ans]
+  st.image(OMDB['Poster'])
+  #if pd.isna(img_ans.values[0]) == False:
+  #  st.image(img_ans.values[0], use_column_width=True)
+  #else:
+  #  st.image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 200)
   cols1, cols2, cols3, cols4, cols5 = st.columns([1, 3, 1,3,1])
   cols2.metric(label="Rating", value=imdb.averageRating[imdb.title==ans].values[0])
   cols4.metric(label='Year', value=int(imdb.startYear[imdb.title==ans].values[0]))
@@ -82,9 +87,5 @@ for steps in range(step_range):
       cols[(num-1) - next_line].image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 150)
     cols[(num-1) - next_line].markdown("<p style='text-align: center'>{}</p>".format(newFilm.title.values[num]), unsafe_allow_html=True)
     cols[(num-1) - next_line].markdown("<p style='text-align: center'><b>{}</b><font color='black'> - - - - </font><i>{}</i></p>".format(newFilm.averageRating.values[num], newFilm.startYear.values[num]), unsafe_allow_html=True)
-API_KEY = st.secrets["key"]
-movieID = 'tt1285016'
-OMDB = requests.get('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + API_KEY).json()
-st.write(OMDB)
-st.write(OMDB['Poster'])
+
 st.image(OMDB['Poster'])
