@@ -22,7 +22,7 @@ with st.sidebar:
   cols1, cols2 = st.columns(2)
   #cols1.write(imdb.averageRating[imdb.title==ans].values[0])
   cols1.metric(label="Rating", value=imdb.averageRating[imdb.title==ans].values[0])
-  cols2.metric(label="Year", value=imdb.startYear[imdb.title==ans].values[0])
+  cols2.metric(label="Year", value=int(imdb.startYear[imdb.title==ans].values[0]))
 
 #KNN
 def knn_reco(ans):
