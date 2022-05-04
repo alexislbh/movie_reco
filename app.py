@@ -83,7 +83,7 @@ for steps in range(step_range):
   for num in range(1 + next_line,6 + next_line):
     if num == reco_val:
       break
-    cols[(num-1) - next_line].image(get_OMDB(newFilm.values[num])['Poster'], width = 150)
+    cols[(num-1) - next_line].image(get_OMDB(newFilm.tconst.values[num])['Poster'], width = 150)
     #if pd.isna(newFilm.poster_url.values[num]) == False:
     #  cols[(num-1) - next_line].image(newFilm.poster_url.values[num], width = 150)
     #else:
