@@ -9,9 +9,9 @@ imdb = pd.read_csv("./imdb_movie.csv")
 imdb['original_language'] = pd.factorize(imdb.original_language)[0]
 
 st.title("Movie Reco") 
-
+my_slider_val = st.slider('Quinn Mallory', 1, 88)
+st.write(slider_val)
 ans = st.selectbox ('Votre film préféré', imdb.title, index=6040)
-st.selectbox('Pick one', ['cats', 'dogs'])
 
 with st.sidebar:
   img_ans = imdb.poster_url[imdb.title==ans]
