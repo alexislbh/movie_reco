@@ -73,4 +73,3 @@ for steps in range(step_range):
     cols[(num-1) - next_line].write(newFilm.title.values[num])
     cols[(num-1) - next_line].metric(label="Rating", value=newFilm.averageRating.values[num])
     cols[(num-1) - next_line].metric(label="Year", value=int(newFilm.startYear.values[num])
-
