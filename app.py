@@ -64,7 +64,7 @@ for steps in range(step_range):
   next_line = steps * 5
   cols = st.columns(5)
   for num in range(1 + next_line,6 + next_line):
-    cols[(num-1) - next_line].subheader(newFilm.title.values[num])
+    cols[(num-1) - next_line].write(newFilm.title.values[num])
     if num == reco_val:
       break
     if pd.isna(newFilm.poster_url.values[num]) == False:
