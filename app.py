@@ -81,6 +81,8 @@ for steps in range(step_range):
       cols[(num-1) - next_line].image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 150)
     cols[(num-1) - next_line].markdown("<p style='text-align: center'>{}</p>".format(newFilm.title.values[num]), unsafe_allow_html=True)
     cols[(num-1) - next_line].markdown("<p style='text-align: center'><b>{}</b><font color='black'> - - - - </font><i>{}</i></p>".format(newFilm.averageRating.values[num], newFilm.startYear.values[num]), unsafe_allow_html=True)
-key = st.secrets["key"]
+API_KEY = st.secrets["key"]
 st.write(key)
+movieID = tt1285016
 st.image('http://www.omdbapi.com/?apikey={}&i=tt1285016'.format(key), width = 200)
+st.image('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + API_KEY)
