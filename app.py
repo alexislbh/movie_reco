@@ -18,11 +18,6 @@ settings =[1.0,1.0,1.0,1.0,3.0]
 
 key = st.secrets["key"]
 
-def get_OMDB(movieID):
-    OMDB_info = requests.get('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + key).json()
-    return OMDB_info
-
-
 cols = st.columns(len(settings))
 for i in range(len(settings)):
   settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.1)
@@ -35,7 +30,7 @@ ans = st.selectbox ('Votre film préféré', imdb.title, index=6040)
 with st.sidebar:
   st.markdown("<h2 style='text-align: center'>{}</h2>".format(imdb.title[imdb.title==ans].values[0]), unsafe_allow_html=True)
   #movieID = imdb.tconst[imdb.title==ans]
-  OMDB = get_OMDB(imdb.tconst[imdb.title==ans])
+  OMDB = requests.get('http://www.omdbapi.com/?i='+ imdb.tconst[imdb.title==ans]+ '&apikey=' + key).json()
   st.image(OMBD['Poster'])
   #if pd.isna(img_ans.values[0]) == False:
   #  st.image(img_ans.values[0], use_column_width=True)
