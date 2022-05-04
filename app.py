@@ -35,8 +35,8 @@ def knn_reco(ans):
 
   x_scaled['numVotes'] = x_scaled.numVotes * 1.5
   x_scaled['startYear'] = x_scaled.startYear * 1.2
-  x_scaled.iloc[:,5:] = x_scaled.iloc[:,5:] * 1.2
-  x_scaled['averageRating'] = x_scaled.averageRating * 0.8
+  x_scaled.iloc[:,5:] = x_scaled.iloc[:,5:] * 1.5
+  x_scaled['averageRating'] = x_scaled.averageRating * 0.2
   x_scaled['original_language'] = x_scaled.original_language * 5
 
   distanceKNN = NearestNeighbors(n_neighbors=reco_val).fit(X_scaled)
