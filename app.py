@@ -33,11 +33,11 @@ def knn_reco(ans):
 
   x_scaled = pd.DataFrame(X_scaled, columns=X.columns)
 
-  x_scaled['numVotes'] = x_scaled.numVotes * 1.5
-  x_scaled['startYear'] = x_scaled.startYear * 1.2
-  x_scaled.iloc[:,5:] = x_scaled.iloc[:,5:] * 1.5
-  x_scaled['averageRating'] = x_scaled.averageRating * 0.2
-  x_scaled['original_language'] = x_scaled.original_language * 5
+  x_scaled['numVotes'] = x_scaled.numVotes * 0.8
+  x_scaled['startYear'] = x_scaled.startYear * 1
+  x_scaled.iloc[:,5:] = x_scaled.iloc[:,5:] * 1.2
+  x_scaled['averageRating'] = x_scaled.averageRating * 0.3
+  x_scaled['original_language'] = x_scaled.original_language * 2
 
   distanceKNN = NearestNeighbors(n_neighbors=reco_val).fit(X_scaled)
 
