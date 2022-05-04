@@ -24,8 +24,8 @@ reco_val = slider_val + 1
 ans = st.selectbox ('Votre film préféré', imdb.title, index=6040)
 
 with st.sidebar:
-  st.markdown("<h1 style='text-align: center; color: grey;'>st.subheader(imdb.title[imdb.title==ans].values[0])</h1>", unsafe_allow_html=True)
-  
+  #st.markdown("<h1 style='text-align: center; color: grey;'>st.subheader(imdb.title[imdb.title==ans].values[0])</h1>", unsafe_allow_html=True)
+  <div style='text-align: center'>st.subheader(imdb.title[imdb.title==ans].values[0])</div>
   img_ans = imdb.poster_url[imdb.title==ans]
   if pd.isna(img_ans.values[0]) == False:
     st.image(img_ans.values[0], use_column_width=True)
