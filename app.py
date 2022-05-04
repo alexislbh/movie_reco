@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
+import requests
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import NearestNeighbors
 from PIL import Image
@@ -83,5 +84,5 @@ for steps in range(step_range):
     cols[(num-1) - next_line].markdown("<p style='text-align: center'><b>{}</b><font color='black'> - - - - </font><i>{}</i></p>".format(newFilm.averageRating.values[num], newFilm.startYear.values[num]), unsafe_allow_html=True)
 API_KEY = st.secrets["key"]
 movieID = 'tt1285016'
-#st.image('http://www.omdbapi.com/?apikey={}&i=tt1285016'.format(key), width = 200)
-st.json('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + API_KEY)
+OMDB = requests.get('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + API_KEY).json()
+st.write(OMDB)
