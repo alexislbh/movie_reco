@@ -75,6 +75,6 @@ for steps in range(step_range):
   for num in range(1 + next_line,6 + next_line):
     if num == reco_val:
       break
-    cols[(num-1) - next_line].image(get_OMDB(newFilm.tconst.values[num])['Poster'], width = 150)
+    cols[(num-1) - next_line].image(get_OMDB(newFilm.tconst.values[num])['Poster'], use_column_width = 'auto')
     cols[(num-1) - next_line].markdown("<p style='text-align: center'>{}</p>".format(newFilm.title.values[num]), unsafe_allow_html=True)
     cols[(num-1) - next_line].markdown("<p style='text-align: center'><b>{}</b><font color='black'> - - - - </font><i>{}</i></p>".format(newFilm.averageRating.values[num], newFilm.startYear.values[num]), unsafe_allow_html=True)
