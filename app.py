@@ -32,18 +32,12 @@ ans = st.selectbox ('Votre film préféré', imdb.title, index=6040)
 
 with st.sidebar:
   st.markdown("<h2 style='text-align: center'>{}</h2>".format(imdb.title[imdb.title==ans].values[0]), unsafe_allow_html=True)
-  #img_ans = imdb.poster_url[imdb.title==ans]
   st.image(get_OMDB(imdb.tconst[imdb.title==ans].values[0])['Poster'])
-  #if pd.isna(img_ans.values[0]) == False:
-  #  st.image(img_ans.values[0], use_column_width=True)
-  #else:
-  #  st.image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 200)
   cols1, cols2, cols3, cols4, cols5 = st.columns([1, 3, 1,3,1])
   cols2.metric(label="Rating", value=imdb.averageRating[imdb.title==ans].values[0])
   cols4.metric(label='Year', value=int(imdb.startYear[imdb.title==ans].values[0]))
   st.write(imdb.tconst[imdb.title==ans].values[0])
   
-
 #KNN
 def knn_reco(ans):
   global reco_val
@@ -71,11 +65,10 @@ def knn_reco(ans):
 
 newFilm = knn_reco(ans)
 
-expander = st.expander("Data")
+expander = st.expander("Data Debug")
 expander.write(newFilm)
 
 step_range = sum([slider_val//5 if slider_val%5==0 else slider_val//5 +1])
-
 
 for steps in range(step_range):
   next_line = steps * 5
@@ -84,13 +77,9 @@ for steps in range(step_range):
     if num == reco_val:
       break
     cols[(num-1) - next_line].image(get_OMDB(newFilm.tconst.values[num])['Poster'], width = 150)
-    #if pd.isna(newFilm.poster_url.values[num]) == False:
-    #  cols[(num-1) - next_line].image(newFilm.poster_url.values[num], width = 150)
-    #else:
-    #  cols[(num-1) - next_line].image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 150)
     cols[(num-1) - next_line].markdown("<p style='text-align: center'>{}</p>".format(newFilm.title.values[num]), unsafe_allow_html=True)
     cols[(num-1) - next_line].markdown("<p style='text-align: center'><b>{}</b><font color='black'> - - - - </font><i>{}</i></p>".format(newFilm.averageRating.values[num], newFilm.startYear.values[num]), unsafe_allow_html=True)
-API_KEY = st.secrets["key"]
-movieID = 'tt0111282'
-OMDB = requests.get('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + API_KEY).json()
-st.image(OMDB['Poster'])
+#API_KEY = st.secrets["key"]
+#movieID = 'tt0111282'
+#OMDB = requests.get('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + API_KEY).json()
+#st.image(OMDB['Poster'])
