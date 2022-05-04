@@ -11,7 +11,7 @@ imdb['original_language'] = pd.factorize(imdb.original_language)[0]
 st.title("Movie Reco") 
 
 setting_name = ['Num Vote','Year','Genre','Rating','Region']
-settings =[0.8,1,1.2,1.5,3]
+settings =[0.8,1.0,1.2,1.5,3.0]
 
 cols = st.columns(len(settings))
 for i in range(len(settings)):
