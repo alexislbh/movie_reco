@@ -30,7 +30,7 @@ ans = st.selectbox ('Votre film préféré', imdb.title, index=6040)
 with st.sidebar:
   st.markdown("<h2 style='text-align: center'>{}</h2>".format(imdb.title[imdb.title==ans].values[0]), unsafe_allow_html=True)
   #movieID = imdb.tconst[imdb.title==ans]
-  OMDB = requests.get('http://www.omdbapi.com/?i='+ imdb.tconst[imdb.title==ans]+ '&apikey=' + key).json()
+  OMDB = requests.get('http://www.omdbapi.com/?i=tt0111282&apikey=' + key).json()
   st.image(OMBD['Poster'])
   #if pd.isna(img_ans.values[0]) == False:
   #  st.image(img_ans.values[0], use_column_width=True)
