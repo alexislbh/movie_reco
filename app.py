@@ -16,8 +16,8 @@ st.title("Movie Reco")
 setting_name = ['Num Vote','Year','Genre','Rating','Region']
 settings =[1.0,1.0,1.0,1.0,3.0]
 
-API_KEY = st.secrets["key"]
-OMDB = requests.get('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + API_KEY).json()
+#API_KEY = st.secrets["key"]
+#OMDB = requests.get('http://www.omdbapi.com/?i='+ imdb.tconst[imdb.title==ans] + '&apikey=' + st.secrets["key"]).json()
 
 
 cols = st.columns(len(settings))
@@ -31,8 +31,8 @@ ans = st.selectbox ('Votre film préféré', imdb.title, index=6040)
 
 with st.sidebar:
   st.markdown("<h2 style='text-align: center'>{}</h2>".format(imdb.title[imdb.title==ans].values[0]), unsafe_allow_html=True)
-  movieID = imdb.tconst[imdb.title==ans]
-  st.image(OMDB['Poster'])
+  #movieID = imdb.tconst[imdb.title==ans]
+  st.image(requests.get('http://www.omdbapi.com/?i='+ imdb.tconst[imdb.title==ans] + '&apikey=' + st.secrets["key"]).json()['Poster'])
   #if pd.isna(img_ans.values[0]) == False:
   #  st.image(img_ans.values[0], use_column_width=True)
   #else:
