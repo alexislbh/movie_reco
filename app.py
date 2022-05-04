@@ -15,7 +15,7 @@ settings =[0.8,1,1.2,1.5,3]
 
 cols = st.columns(len(settings))
 for i in range(len(settings)):
-  settings[i] = cols[i].number_input(setting_name[i])
+  settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.1)
   cols[i].write(settings[i])
 
 slider_val = st.slider('Choose your number of recomendation', 1, 15, value=5)
