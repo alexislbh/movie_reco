@@ -31,9 +31,8 @@ with st.sidebar:
   else:
     st.image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 200)
   cols1, cols2, cols3, cols4, cols5 = st.columns(5)
-  cols2.metric(label="Rating", value=imdb.averageRating[imdb.title==ans].values[0])
-  cols3.write('')
-  cols4.metric(label="Year", value=int(imdb.startYear[imdb.title==ans].values[0]))
+  cols2.metric(label="Rating", value=imdb.averageRating[imdb.title==ans].values[0], use_column_width=True)
+  cols4.metric(label="Year", value=int(imdb.startYear[imdb.title==ans].values[0]), use_column_width=True)
   
 
 #KNN
