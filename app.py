@@ -39,7 +39,7 @@ def knn_reco(ans):
 
   predict = distanceKNN.kneighbors(X_scaled[imdb.title == ans])
 
-  newFilm = pd.DataFrame([imdb.iloc[predict[1][0][i],:] for i in range(6)],columns = imdb.columns) 
+  newFilm = pd.DataFrame([imdb.iloc[predict[1][0][i],:] for i in range(slider_val+1)],columns = imdb.columns) 
   
   return newFilm
 
@@ -47,7 +47,7 @@ newFilm = knn_reco(ans)
 st.write(newFilm)
 
 cols = st.columns(5)
-for num in range(1,6):
+for num in range(1,slider_val+1):
   if pd.isna(newFilm.poster_url.values[num]) == False:
     cols[num-1].image(newFilm.poster_url.values[num], width = 100)
   else:
