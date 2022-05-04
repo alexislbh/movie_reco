@@ -71,6 +71,4 @@ for steps in range(step_range):
     else:
       cols[(num-1) - next_line].image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 100)
     cols[(num-1) - next_line].write(newFilm.title.values[num])
-    cols1, cols2 = st.columns(2)
-    cols1.metric(label="Rating", value=newFilm.averageRating.values[num])
-    cols2.metric(label="Year", value=int(newFilm.startYear.values[num])
+
