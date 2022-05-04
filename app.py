@@ -52,7 +52,9 @@ def knn_reco(ans):
 newFilm = knn_reco(ans)
 st.write(newFilm)
 
-for steps in range(slider_val//5):
+step_range = [slider_val//5 if slider_val%5==0 else slider_val//5 +1]
+
+for steps in range(step_range):
   cols = st.columns(slider_val)
   for num in range(1,reco_val):
     if pd.isna(newFilm.poster_url.values[num]) == False:
