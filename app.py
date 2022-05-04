@@ -79,8 +79,8 @@ for steps in range(step_range):
     if num == reco_val:
       break
     if pd.isna(newFilm.poster_url.values[num]) == False:
-      cols[(num-1) - next_line].image(newFilm.poster_url.values[num], width = 200)
+      cols[(num-1) - next_line].image(newFilm.poster_url.values[num], width = 125)
     else:
-      cols[(num-1) - next_line].image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 200)
+      cols[(num-1) - next_line].image('https://upload.wikimedia.org/wikipedia/commons/e/e6/Pas_d%27image_disponible.svg', width = 125)
     cols[(num-1) - next_line].write(newFilm.title.values[num])
 
