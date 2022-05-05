@@ -79,23 +79,12 @@ for steps in range(step_range):
     cols[(num-1) - next_line].image(get_OMDB(newFilm.tconst.values[num])['Poster'], use_column_width = 'auto')
     cols[(num-1) - next_line].markdown("<p style='text-align: center'>{}</p>".format(newFilm.title.values[num]), unsafe_allow_html=True)
 
-row1 = st.empty() // or st.row()?
+row1 = st.empty()
 
 row1col1 = row1.col(width=100) // either width or width_ratio
-row1col2 = row1.col(width_ratio=1) // If it is 1, or there's not enough space left, fill the remainder
+row1col2 = row1.col(width_ratio=1)
 
 row1col1.button("Hello")
-row1col2.dataframe(...)
+row1col2.write('test')
 
 st.map(....)    
-
-grid = st.grid()
-for image, scores in images:
-    row = grid.row()
-
-    row.write(image)
-    subgrid = row.grid()
-    for label, score in scores:
-          row2 = subgrid.row()
-          row2.write(label)
-          row2.write(score)
