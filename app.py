@@ -49,10 +49,10 @@ def knn_reco(ans):
 
   x_scaled['numVotes'] = x_scaled.numVotes * settings[0]
   x_scaled['startYear'] = x_scaled.startYear * settings[1]
-  x_scaled.imdb.iloc[:,8:30] = x_scaled.imdb.iloc[:,8:30] * settings[2]
+  x_scaled.iloc[:,8:30] = x_scaled.iloc[:,8:30] * settings[2]
   x_scaled['averageRating'] = x_scaled.averageRating * settings[3]
-  x_scaled.imdb.iloc[:,31:97] = x_scaled.imdb.iloc[:,31:97] * settings[4]
-  x_scaled.imdb.iloc[:,97:] = x_scaled.imdb.iloc[:,97:] * settings[5]
+  x_scaled.iloc[:,31:97] = x_scaled.iloc[:,31:97] * settings[4]
+  x_scaled.iloc[:,97:] = x_scaled.iloc[:,97:] * settings[5]
   
   distanceKNN = NearestNeighbors(n_neighbors=reco_val).fit(X_scaled)
 
