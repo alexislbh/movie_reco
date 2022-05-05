@@ -8,7 +8,7 @@ from PIL import Image
 
 st.set_page_config(layout="wide", initial_sidebar_state="expanded")
 
-imdb = pd.read_csv("./imdb_movie.zip")
+imdb = pd.read_csv("./imdb_movie.csv")
 
 st.title("Movie Reco") 
 
