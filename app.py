@@ -81,7 +81,7 @@ for steps in range(step_range):
 
 row1 = st.empty()
 
-row1col1 = row1.col(width=100) // either width or width_ratio
+row1col1 = row1.col(width=100)
 row1col2 = row1.col(width_ratio=1)
 
 row1col1.button("Hello")
