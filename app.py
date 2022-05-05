@@ -83,7 +83,7 @@ grid = st.grid()
 for image, scores in images:
     row = grid.row()
 
-    row.write(image) // aspect ratio or width as parameter
+    row.write(image)
     subgrid = row.grid()
     for label, score in scores:
           row2 = subgrid.row()
