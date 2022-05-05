@@ -9,7 +9,7 @@ from PIL import Image
 
 st.set_page_config(layout="wide", initial_sidebar_state="expanded")
 
-imdb = pd.read_pickle('./imdb_movie')
+imdb = pd.read_pickle('./imdb_movie.pkl')
 
 st.title("Movie Reco") 
 
