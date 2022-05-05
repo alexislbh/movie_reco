@@ -40,7 +40,7 @@ with st.sidebar:
 def knn_reco(ans):
   global reco_val
   global settings
-  X = imdb[['isAdult', 'startYear', 'runtimeMinutes', 'averageRating', 'numVotes', 'Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family', 'Fantasy', 'History', 'Horror', 'Music', 'Musical', 'Mystery', 'News', 'Romance', 'Sci-Fi', 'Sport', 'Thriller', 'War', 'Western','original_language']]
+  X = imdb.drop(['tconst','originalTitle','title'], axis =1)
 
   scale = StandardScaler().fit(X) 
   X_scaled = scale.transform(X)
@@ -49,9 +49,9 @@ def knn_reco(ans):
 
   x_scaled['numVotes'] = x_scaled.numVotes * settings[0]
   x_scaled['startYear'] = x_scaled.startYear * settings[1]
-  x_scaled.iloc[:,5:] = x_scaled.iloc[:,5:] * settings[2]
+  x_scaled.iloc[:,5:27] = x_scaled.iloc[:,5:27] * settings[2]
   x_scaled['averageRating'] = x_scaled.averageRating * settings[3]
-  x_scaled['original_language'] = x_scaled.original_language * settings[4]
+  x_scaled.iloc[:,28:] = x_scaled.iloc[:,28:] * settings[4]
   
   distanceKNN = NearestNeighbors(n_neighbors=reco_val).fit(X_scaled)
 
