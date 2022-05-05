@@ -1,2 +1,2 @@
-scikit_learn==1.0.1
-
+scikit_learn
+pickle5
