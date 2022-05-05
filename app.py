@@ -8,8 +8,7 @@ from PIL import Image
 
 st.set_page_config(layout="wide", initial_sidebar_state="expanded")
 
-imdb = pd.read_csv("./imdb_movie.csv")
-imdb['original_language'] = pd.factorize(imdb.original_language)[0]
+imdb = pd.read_csv("./imdb_movie.zip")
 
 st.title("Movie Reco") 
 
