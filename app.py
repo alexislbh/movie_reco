@@ -87,4 +87,4 @@ row1col2 = row1.col(width_ratio=1)
 row1col1.button("Hello")
 row1col2.write('test')
 
-st.map(....)    
+st.image(get_OMDB(imdb.tconst[imdb.title==ans].values[0])['Poster'], use_column_width = 'auto')   
