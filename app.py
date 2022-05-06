@@ -9,7 +9,7 @@ from PIL import Image
 st.set_page_config(layout="wide", initial_sidebar_state="expanded")
 
 #imdb = pd.read_pickle('./imdb_movie.pkl')
-imdb = requests.get(https://drive.google.com/file/d/11tJZTFSfk3v_samcZGuCMev9RA7RhrJN/view?usp=sharing)
+imdb = requests.get('https://drive.google.com/file/d/11tJZTFSfk3v_samcZGuCMev9RA7RhrJN/view?usp=sharing')
 
 st.title("Movie Reco") 
 
