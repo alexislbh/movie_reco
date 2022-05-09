@@ -26,14 +26,15 @@ st.title("Movie Reco")
 imdb = pd.read_pickle('./imdb_movie.pkl')
 
 with st.sidebar:
+#if False:
   Rien = st.checkbox('Base')
   Real = st.checkbox('Réalisateur')
   Keyword = st.checkbox('Mots clés')
   if Rien:
     imdb = imdb.drop(columns=imdb.iloc[:,8:30].columns)
-  elif Real:
+  if Real:
     imdb = imdb
-  elif Keyword:
+  if Keyword:
     imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
     imdb = pd.merge(imdb, imdb_movie_keyword, how="inner", on=["tconst"])
 
