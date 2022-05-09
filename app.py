@@ -23,8 +23,6 @@ st.set_page_config(layout="wide", initial_sidebar_state="expanded")
 
 st.title("Movie Reco") 
 
-
-
 with st.sidebar:
   genre = st.radio("Algo fonctionnement", ('Tout', 'real', 'Keyword', 'Rien'))
   if genre == 'Tout':
@@ -33,6 +31,11 @@ with st.sidebar:
     imdb = pd.merge(imdb_movie, imdb_movie_keyword, how="inner", on=["tconst"])
   elif genre == 'real':
     imdb = pd.read_pickle('./imdb_movie.pkl')
+  elif genre == 'keyword':
+    imdb_movie = pd.read_pickle('./imdb_movie.pkl')
+    imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
+    imdb = pd.merge(imdb_movie, imdb_movie_keyword, how="inner", on=["tconst"])
+    imdb = imdb.drop(columns=imdb.iloc[:,8:30])
 
 setting_name = ['Num Vote','Year','Genre','Rating','Region','Réalistaeur','Keyword']
 settings =[1.0,1.0,1.0,1.0,1.0,1.0,1.0]
