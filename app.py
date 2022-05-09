@@ -9,6 +9,8 @@ from PIL import Image
 #st.button('Select',on_click=('https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py'))
 #st.markdown('Essayez notre [algorithme de recommandation](https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py)')
 
+if st.button('Select'):
+  requests.get('https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py')
 #st.write(f'''
 #    <a target="_self" href="https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py">
 #        <button>
@@ -127,5 +129,4 @@ for steps in range(step_range):
     cols[(num-1) - next_line].markdown("<p style='text-align: center'><b>{}</b><font color='black'> - - - - </font><i>{}</i></p>".format(round(newFilm.averageRating.values[num],1), newFilm.startYear.values[num]), unsafe_allow_html=True)
     cols[(num-1) - next_line].image(get_OMDB(newFilm.tconst.values[num])['Poster'], use_column_width = 'auto')
     cols[(num-1) - next_line].markdown("<p style='text-align: center'>{}</p>".format(newFilm.title.values[num]), unsafe_allow_html=True)
-    if cols[(num-1) - next_line].button('Select'):
-      ans = newFilm.title.values[num]
+
