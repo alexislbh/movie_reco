@@ -38,16 +38,7 @@ settings =[1.0,1.0,1.0,1.0,1.0,1.0,1.0]
 def get_OMDB(movieID):
   OMDB = requests.get('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + st.secrets["key"]).json()
   return OMDB
-
-
-with st.sidebar:
-  st.markdown("<h2 style='text-align: center'>{}</h2>".format(imdb.title[imdb.title==ans].values[0]), unsafe_allow_html=True)
-  st.image(get_OMDB(imdb.tconst[imdb.title==ans].values[0])['Poster'], use_column_width = 'auto')
-  cols1, cols2, cols3, cols4, cols5 = st.columns([1, 3, 1,3,1])
-  cols2.metric(label="Rating", value=imdb.averageRating[imdb.title==ans].values[0])
-  cols4.metric(label='Year', value=int(imdb.startYear[imdb.title==ans].values[0]))
   
-
 cols = st.columns(len(settings))
 for i in range(len(settings)):
   settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.1)
@@ -56,6 +47,13 @@ for i in range(len(settings)):
 slider_val = st.slider('Choose your number of recomendation', 1, 15, value=5)
 reco_val = slider_val + 1
 ans = st.selectbox ('Votre film préféré', imdb.title, index=6040)
+
+with st.sidebar:
+  st.markdown("<h2 style='text-align: center'>{}</h2>".format(imdb.title[imdb.title==ans].values[0]), unsafe_allow_html=True)
+  st.image(get_OMDB(imdb.tconst[imdb.title==ans].values[0])['Poster'], use_column_width = 'auto')
+  cols1, cols2, cols3, cols4, cols5 = st.columns([1, 3, 1,3,1])
+  cols2.metric(label="Rating", value=imdb.averageRating[imdb.title==ans].values[0])
+  cols4.metric(label='Year', value=int(imdb.startYear[imdb.title==ans].values[0]))
 
 
 #KNN
