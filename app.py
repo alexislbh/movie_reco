@@ -7,7 +7,7 @@ from sklearn.neighbors import NearestNeighbors
 from PIL import Image
 
 #st.button('Select',on_click='https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py')
-st.markdown('Essayez notre [algorithme de recommandation](https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py')
+st.markdown('Essayez notre [algorithme de recommandation](https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py'))
 
 st.set_page_config(layout="wide", initial_sidebar_state="expanded")
 
