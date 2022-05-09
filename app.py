@@ -6,6 +6,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import NearestNeighbors
 from PIL import Image
 
+st.button('Select',on_click='https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py')
+
 st.set_page_config(layout="wide", initial_sidebar_state="expanded")
 
 imdb = pd.read_pickle('./imdb_movie.pkl')
@@ -79,4 +81,3 @@ for steps in range(step_range):
     cols[(num-1) - next_line].markdown("<p style='text-align: center'><b>{}</b><font color='black'> - - - - </font><i>{}</i></p>".format(round(newFilm.averageRating.values[num],1), newFilm.startYear.values[num]), unsafe_allow_html=True)
     cols[(num-1) - next_line].image(get_OMDB(newFilm.tconst.values[num])['Poster'], use_column_width = 'auto')
     cols[(num-1) - next_line].markdown("<p style='text-align: center'>{}</p>".format(newFilm.title.values[num]), unsafe_allow_html=True)
-    cols[(num-1) - next_line].button('Select')
