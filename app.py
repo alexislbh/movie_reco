@@ -27,7 +27,7 @@ st.title("Movie Reco")
 imdb = pd.read_pickle('./imdb_movie.pkl')
 
 if st.button('Select'):
-  webbrowser.open('https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py')
+  webbrowser.open_new_tab('https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py')
 
 #with st.sidebar:
 if False:
