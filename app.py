@@ -13,7 +13,7 @@ imdb = pd.read_pickle('./imdb_movie.pkl')
 st.title("Movie Reco") 
 
 setting_name = ['Num Vote','Year','Genre','Rating','Region','Réalistaeur']
-settings =[1.0,1.0,1.0,1.0,1.0,1.0]
+settings =[1.0,1.0,1.0,1.0,1.0,0.07]
 
 def get_OMDB(movieID):
   OMDB = requests.get('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + st.secrets["key"]).json()
