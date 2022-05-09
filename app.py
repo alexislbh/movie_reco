@@ -23,7 +23,7 @@ st.set_page_config(layout="wide", initial_sidebar_state="expanded")
 
 st.title("Movie Reco") 
 
-genre = st.radio("Algo fonctionnement", ('Tout', 'real', 'Keyword', 'Rien'))
+genre = st.selectbox("Algo fonctionnement", ('Tout', 'real', 'Keyword', 'Rien'))
 
 with st.sidebar:
   if genre == 'Tout':
