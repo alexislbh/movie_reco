@@ -11,7 +11,7 @@ from PIL import Image
 #st.markdown('Essayez notre [algorithme de recommandation](https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py)')
 
 if st.button('Select'):
-    webbrowser.open('https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py')
+  webbrowser.open('https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py')
 #st.write(f'''
 #    <a target="_self" href="https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py">
 #        <button>
