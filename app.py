@@ -23,9 +23,10 @@ st.set_page_config(layout="wide", initial_sidebar_state="expanded")
 
 st.title("Movie Reco") 
 
-genre = st.selectbox("Algo fonctionnement", ('Tout', 'real', 'Keyword', 'Rien'))
+
 
 with st.sidebar:
+  genre = st.radio("Algo fonctionnement", ('Tout', 'real', 'Keyword', 'Rien'))
   if genre == 'Tout':
     imdb_movie = pd.read_pickle('./imdb_movie.pkl')
     imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
