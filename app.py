@@ -23,23 +23,6 @@ st.set_page_config(layout="wide", initial_sidebar_state="expanded")
 
 st.title("Movie Reco") 
 
-setting_name = ['Num Vote','Year','Genre','Rating','Region','Réalistaeur','Keyword']
-settings =[1.0,1.0,1.0,1.0,1.0,1.0,1.0]
-
-def get_OMDB(movieID):
-  OMDB = requests.get('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + st.secrets["key"]).json()
-  return OMDB
-
-
-cols = st.columns(len(settings))
-for i in range(len(settings)):
-  settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.1)
-  cols[i].write(settings[i])
-
-slider_val = st.slider('Choose your number of recomendation', 1, 15, value=5)
-reco_val = slider_val + 1
-ans = st.selectbox ('Votre film préféré', imdb.title, index=6040)
-
 with st.sidebar:
   genre = st.radio(
      "Algo fonctionnement",
@@ -59,6 +42,25 @@ with st.sidebar:
   cols2.metric(label="Rating", value=imdb.averageRating[imdb.title==ans].values[0])
   cols4.metric(label='Year', value=int(imdb.startYear[imdb.title==ans].values[0]))
   
+
+setting_name = ['Num Vote','Year','Genre','Rating','Region','Réalistaeur','Keyword']
+settings =[1.0,1.0,1.0,1.0,1.0,1.0,1.0]
+
+def get_OMDB(movieID):
+  OMDB = requests.get('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + st.secrets["key"]).json()
+  return OMDB
+
+
+cols = st.columns(len(settings))
+for i in range(len(settings)):
+  settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.1)
+  cols[i].write(settings[i])
+
+slider_val = st.slider('Choose your number of recomendation', 1, 15, value=5)
+reco_val = slider_val + 1
+ans = st.selectbox ('Votre film préféré', imdb.title, index=6040)
+
+
 #KNN
 def knn_reco(ans):
   global reco_val
