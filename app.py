@@ -25,22 +25,22 @@ st.title("Movie Reco")
 
 imdb = pd.read_pickle('./imdb_movie.pkl')
 
-with st.sidebar:
-#if False:
+#with st.sidebar:
+if False:
   Rien = st.checkbox('Base')
   Real = st.checkbox('Réalisateur')
   Keyword = st.checkbox('Mots clés')
   if Rien:
     imdb = imdb.drop(columns=imdb.iloc[:,8:30].columns)
-  if Real:
+  elif Real:
     imdb = imdb
-  if Keyword:
+  elif Keyword:
     imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
     imdb = pd.merge(imdb, imdb_movie_keyword, how="inner", on=["tconst"])
 
 
-#with st.sidebar:
-if False:
+with st.sidebar:
+#if False:
   genre = st.radio("Algo fonctionnement", ('Tout', 'real', 'Keyword', 'Rien'))
   if genre == 'Tout':
     imdb_movie = pd.read_pickle('./imdb_movie.pkl')
