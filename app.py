@@ -23,13 +23,14 @@ st.set_page_config(layout="wide", initial_sidebar_state="expanded")
 
 st.title("Movie Reco") 
 
-with st.sidebar:
-  st.markdown("<h2 style='text-align: center'>{}</h2>".format(imdb.title[imdb.title==ans].values[0]), unsafe_allow_html=True)
-  st.image(get_OMDB(imdb.tconst[imdb.title==ans].values[0])['Poster'], use_column_width = 'auto')
-  cols1, cols2, cols3, cols4, cols5 = st.columns([1, 3, 1,3,1])
-  cols2.metric(label="Rating", value=imdb.averageRating[imdb.title==ans].values[0])
-  cols4.metric(label='Year', value=int(imdb.startYear[imdb.title==ans].values[0]))
+genre = st.radio("Algo fonctionnement", ('Tout', 'real', 'Keyword', 'Rien'))
   
+if genre == 'Tout':
+  imdb_movie = pd.read_pickle('./imdb_movie.pkl')
+  imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
+  imdb = pd.merge(imdb_movie, imdb_movie_keyword, how="inner", on=["tconst"])
+elif genre == 'real':
+  imdb = pd.read_pickle('./imdb_movie.pkl')
 
 setting_name = ['Num Vote','Year','Genre','Rating','Region','Réalistaeur','Keyword']
 settings =[1.0,1.0,1.0,1.0,1.0,1.0,1.0]
@@ -38,6 +39,14 @@ def get_OMDB(movieID):
   OMDB = requests.get('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + st.secrets["key"]).json()
   return OMDB
 
+
+with st.sidebar:
+  st.markdown("<h2 style='text-align: center'>{}</h2>".format(imdb.title[imdb.title==ans].values[0]), unsafe_allow_html=True)
+  st.image(get_OMDB(imdb.tconst[imdb.title==ans].values[0])['Poster'], use_column_width = 'auto')
+  cols1, cols2, cols3, cols4, cols5 = st.columns([1, 3, 1,3,1])
+  cols2.metric(label="Rating", value=imdb.averageRating[imdb.title==ans].values[0])
+  cols4.metric(label='Year', value=int(imdb.startYear[imdb.title==ans].values[0]))
+  
 
 cols = st.columns(len(settings))
 for i in range(len(settings)):
