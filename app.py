@@ -27,8 +27,8 @@ imdb = pd.merge(imdb_movie, imdb_movie_keyword, how="inner", on=["tconst"])
 
 st.title("Movie Reco") 
 
-setting_name = ['Num Vote','Year','Genre','Rating','Region','Réalistaeur']
-settings =[1.0,1.0,1.0,1.0,1.0,0.07]
+setting_name = ['Num Vote','Year','Genre','Rating','Region','Réalistaeur','Keyword']
+settings =[1.0,1.0,1.0,1.0,1.0,1.0,1.0]
 
 def get_OMDB(movieID):
   OMDB = requests.get('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + st.secrets["key"]).json()
@@ -67,8 +67,9 @@ def knn_reco(ans):
   x_scaled.iloc[:,8:30] = x_scaled.iloc[:,8:30] * settings[2]
   x_scaled['averageRating'] = x_scaled.averageRating * settings[3]
   x_scaled.iloc[:,30:96] = x_scaled.iloc[:,30:96] * settings[4]
-  x_scaled.iloc[:,96:] = x_scaled.iloc[:,96:] * settings[5]
-  x_scaled['Drama'] = x_scaled.numVotes * 0.2
+  x_scaled.iloc[:,96:817] = x_scaled.iloc[:,96:817] * settings[5]
+  x_scaled.iloc[:,817:] = x_scaled.iloc[:,817:] * settings[6]
+  #x_scaled['Drama'] = x_scaled.numVotes * 0.2
   
   distanceKNN = NearestNeighbors(n_neighbors=reco_val).fit(X_scaled)
 
