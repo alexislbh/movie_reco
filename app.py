@@ -21,7 +21,9 @@ from PIL import Image
 
 st.set_page_config(layout="wide", initial_sidebar_state="expanded")
 
-imdb = pd.read_pickle('./imdb_movie.pkl')
+imdb_movie = pd.read_pickle('./imdb_movie.pkl')
+imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
+imdb = pd.merge(imdb_movie, imdb_movie_keyword, how="inner", on=["tconst"])
 
 st.title("Movie Reco") 
 
