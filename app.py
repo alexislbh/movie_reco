@@ -24,18 +24,6 @@ st.set_page_config(layout="wide", initial_sidebar_state="expanded")
 st.title("Movie Reco") 
 
 with st.sidebar:
-  genre = st.radio(
-     "Algo fonctionnement",
-     ('Tout', 'real', 'Keyword', 'Rien'))
-  
-  if genre == 'Tout':
-    imdb_movie = pd.read_pickle('./imdb_movie.pkl')
-    imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
-    imdb = pd.merge(imdb_movie, imdb_movie_keyword, how="inner", on=["tconst"])
-  elif genre == 'real':
-    imdb = pd.read_pickle('./imdb_movie.pkl')
-    
-    
   st.markdown("<h2 style='text-align: center'>{}</h2>".format(imdb.title[imdb.title==ans].values[0]), unsafe_allow_html=True)
   st.image(get_OMDB(imdb.tconst[imdb.title==ans].values[0])['Poster'], use_column_width = 'auto')
   cols1, cols2, cols3, cols4, cols5 = st.columns([1, 3, 1,3,1])
