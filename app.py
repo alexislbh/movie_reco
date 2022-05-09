@@ -24,7 +24,7 @@ st.set_page_config(layout="wide", initial_sidebar_state="expanded")
 st.title("Movie Reco") 
 
 with st.sidebar:
-  choice = st.checkbox("Algo fonctionnement", ('Rien', 'real', 'Keyword', 'Tout'))
+  choice = st.checkbox('Rien', 'real', 'Keyword', 'Tout')
   if Rien:
     imdb = pd.read_pickle('./imdb_movie.pkl').drop(columns=imdb.iloc[:,8:30].columns)
   elif Real:
