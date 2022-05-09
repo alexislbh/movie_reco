@@ -53,6 +53,7 @@ def knn_reco(ans):
   x_scaled['averageRating'] = x_scaled.averageRating * settings[3]
   x_scaled.iloc[:,30:96] = x_scaled.iloc[:,30:96] * settings[4]
   x_scaled.iloc[:,96:] = x_scaled.iloc[:,96:] * settings[5]
+  x_scaled['Drama'] = x_scaled.numVotes * 0.2
   
   distanceKNN = NearestNeighbors(n_neighbors=reco_val).fit(X_scaled)
 
