@@ -37,8 +37,9 @@ with st.sidebar:
     imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
     imdb = pd.merge(imdb, imdb_movie_keyword, how="inner", on=["tconst"])
 
-'''
-with st.sidebar:
+
+#with st.sidebar:
+if False:
   genre = st.radio("Algo fonctionnement", ('Tout', 'real', 'Keyword', 'Rien'))
   if genre == 'Tout':
     imdb_movie = pd.read_pickle('./imdb_movie.pkl')
@@ -56,7 +57,6 @@ with st.sidebar:
     imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
     imdb = pd.merge(imdb_movie, imdb_movie_keyword, how="inner", on=["tconst"])
     imdb = imdb.drop(columns=imdb.iloc[:,8:].columns)
-'''
 
 setting_name = ['Num Vote','Year','Genre','Rating','Region','Réalistaeur','Keyword']
 settings =[1.0,1.0,1.0,1.0,1.0,1.0,1.0]
