@@ -36,7 +36,7 @@ with st.sidebar:
     imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
     imdb = pd.merge(imdb_movie, imdb_movie_keyword, how="inner", on=["tconst"])
     imdb = imdb.drop(columns=imdb.iloc[:,8:30].columns)
-   elif genre == 'Rien':
+  elif genre == 'Rien':
     imdb_movie = pd.read_pickle('./imdb_movie.pkl')
     imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
     imdb = pd.merge(imdb_movie, imdb_movie_keyword, how="inner", on=["tconst"])
