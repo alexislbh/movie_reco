@@ -31,11 +31,16 @@ with st.sidebar:
     imdb = pd.merge(imdb_movie, imdb_movie_keyword, how="inner", on=["tconst"])
   elif genre == 'real':
     imdb = pd.read_pickle('./imdb_movie.pkl')
-  elif genre == 'keyword':
+  elif genre == 'Keyword':
     imdb_movie = pd.read_pickle('./imdb_movie.pkl')
     imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
     imdb = pd.merge(imdb_movie, imdb_movie_keyword, how="inner", on=["tconst"])
-    imdb = imdb.drop(columns=imdb.iloc[:,9:30].columns)
+    imdb = imdb.drop(columns=imdb.iloc[:,8:30].columns)
+   elif genre == 'Rien':
+    imdb_movie = pd.read_pickle('./imdb_movie.pkl')
+    imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
+    imdb = pd.merge(imdb_movie, imdb_movie_keyword, how="inner", on=["tconst"])
+    imdb = imdb.drop(columns=imdb.iloc[:,8:].columns)
 
 setting_name = ['Num Vote','Year','Genre','Rating','Region','Réalistaeur','Keyword']
 settings =[1.0,1.0,1.0,1.0,1.0,1.0,1.0]
