@@ -40,13 +40,13 @@ with st.sidebar:
   if Actors:
     imdb_actors = pd.read_pickle('./imdb_actors.pkl')
     imdb = pd.merge(imdb, imdb_actors, how="left", on=["tconst"])
-  elif Directors:
+  if Directors:
     imdb_directors = pd.read_pickle('./imdb_directors.pkl')
     imdb = pd.merge(imdb, imdb_directors, how="left", on=["tconst"])
-  elif genres:
+  if genres:
     imdb_genres = pd.read_pickle('./imdb_genres.pkl')
     imdb = pd.merge(imdb, imdb_genres, how="left", on=["tconst"])
-  elif keyword:
+  if keyword:
     imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
     imdb = pd.merge(imdb, imdb_movie_keyword, how="left", on=["tconst"])
 
