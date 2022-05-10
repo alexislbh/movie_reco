@@ -137,11 +137,11 @@ def knn_reco(ans):
   x_scaled['averageRating'] = x_scaled.averageRating * settings[3]
   x_scaled.loc[:,'ab':'zu'] = x_scaled.loc[:,'ab':'zu'] * settings[4]
   if Directors:
-    x_scaled.loc[:,'Abbas Kiarostami':'Éric Rohmer'] = x_scaled.loc[:,'Abbas Kiarostami':'Éric Rohmer'] * settings[5]
+    x_scaled.loc[:,'Abbas Kiarostami':'Éric Rohmer'] = x_scaled.loc[:,'Abbas Kiarostami':'Éric Rohmer'] * settings[setting_name.index('Directors')]
   if Keyword:    
-    x_scaled.loc[:,'woman director':'summer vacation'] = x_scaled.loc[:,'woman director':'summer vacation'] * settings[6]
+    x_scaled.loc[:,'woman director':'summer vacation'] = x_scaled.loc[:,'woman director':'summer vacation'] * settings[setting_name.index('Keyword')]
   if Actors:
-    x_scaled.loc[:,'Aaron Eckhart':'Zac Efron'] = x_scaled.loc[:,'Aaron Eckhart':'Zac Efron'] * settings[7]
+    x_scaled.loc[:,'Aaron Eckhart':'Zac Efron'] = x_scaled.loc[:,'Aaron Eckhart':'Zac Efron'] * settings[setting_name.index('Actors')]
   
   
   distanceKNN = NearestNeighbors(n_neighbors=reco_val).fit(X_scaled)
