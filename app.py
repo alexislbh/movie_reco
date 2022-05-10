@@ -19,7 +19,7 @@ st.set_page_config(
 
 st.write(f'''
     <a target="_self" href="https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py" style="text-decoration: none">
-        <button kind="primary" class="css-1q8dd3e edgvbvh9">
+        <button kind="primary" class="css-1q8dd3e edgvbvh9" style=text-align:center">
             Nos recommandations
         </button>
     </a>
