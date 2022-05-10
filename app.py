@@ -79,6 +79,10 @@ with st.sidebar:
 def knn_reco(ans):
   global reco_val
   global settings
+  global Actors
+  global Directors
+  global genres
+  global keyword
   X = imdb.drop(['tconst','title','genres','original_language'], axis =1)
 
   scale = StandardScaler().fit(X) 
@@ -88,12 +92,16 @@ def knn_reco(ans):
 
   x_scaled['numVotes'] = x_scaled.numVotes * settings[0]
   x_scaled['startYear'] = x_scaled.startYear * settings[1]
-  x_scaled.loc[:,'Action':'Western'] = x_scaled.loc[:,'Action':'Western'] * settings[2]
+  if genres:
+    x_scaled.loc[:,'Action':'Western'] = x_scaled.loc[:,'Action':'Western'] * settings[2]
   x_scaled['averageRating'] = x_scaled.averageRating * settings[3]
   x_scaled.loc[:,'ab':'zu'] = x_scaled.loc[:,'ab':'zu'] * settings[4]
-  x_scaled.loc[:,'Abbas Kiarostami':'Éric Rohmer'] = x_scaled.loc[:,'Abbas Kiarostami':'Éric Rohmer'] * settings[5]
-  x_scaled.loc[:,'woman director':'summer vacation'] = x_scaled.loc[:,'woman director':'summer vacation'] * settings[6]
-  x_scaled.loc[:,'Aaron Eckhart':'Zac Efron'] = x_scaled.loc[:,'Aaron Eckhart':'Zac Efron'] * settings[7]
+  if Directors:
+    x_scaled.loc[:,'Abbas Kiarostami':'Éric Rohmer'] = x_scaled.loc[:,'Abbas Kiarostami':'Éric Rohmer'] * settings[5]
+  if keyword:    
+    x_scaled.loc[:,'woman director':'summer vacation'] = x_scaled.loc[:,'woman director':'summer vacation'] * settings[6]
+  if Actors:
+    x_scaled.loc[:,'Aaron Eckhart':'Zac Efron'] = x_scaled.loc[:,'Aaron Eckhart':'Zac Efron'] * settings[7]
   x_scaled['Drama'] = x_scaled.Drama * 0.5
   
   distanceKNN = NearestNeighbors(n_neighbors=reco_val).fit(X_scaled)
