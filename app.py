@@ -114,8 +114,8 @@ def knn_reco(ans):
 
 newFilm = knn_reco(ans)
 
-Data Debug = st.checkbox('Data Debug')
-if Data Debug:
+Data_Debug = st.checkbox('Data Debug')
+if Data_Debug :
   expander = st.expander("Data Debug")
   expander.write(newFilm)
 
