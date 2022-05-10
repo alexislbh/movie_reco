@@ -27,12 +27,15 @@ st.write(f'''
 
 st.title("Movie Reco") 
 
-imdb = pd.read_pickle('./imdb_movie.pkl')
+imdb_movie = pd.read_pickle('./imdb_movie.pkl')
+imdb_original_language = pd.read_pickle('./imdb_original_language.pkl')
+imdb = pd.merge(imdb_movie, imdb_original_language, how="left", on=["tconst"])
 
 with st.sidebar:
-  Rien = st.checkbox('Base')
-  Real = st.checkbox('Réalisateur')
-  Keyword = st.checkbox('Mots clés')
+  Actors = st.checkbox('Base')
+  Directors = st.checkbox('Réalisateur')
+  genres = st.checkbox('Mots clés')
+  keyword = st.checkbox('Réalisateur')
   if Rien:
     imdb = imdb.drop(columns=imdb.iloc[:,8:30].columns)
   elif Real:
