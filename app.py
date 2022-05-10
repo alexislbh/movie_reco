@@ -35,7 +35,7 @@ with st.sidebar:
 #if False:
   Actors = st.checkbox('Actors')
   Directors = st.checkbox('Directors')
-  genres = st.checkbox('Genres')
+  Genres = st.checkbox('Genres')
   keyword = st.checkbox('Keyword')
   if Actors:
     imdb_actors = pd.read_pickle('./imdb_actors.pkl')
