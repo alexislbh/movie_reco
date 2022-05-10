@@ -19,8 +19,8 @@ st.title("Movie Reco")
 imdb = pd.read_pickle('./imdb_movie.pkl')
 
 st.write(f'''
-    <a target="_self" href="https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py">
-        <button style="text-decoration: none" class="css-1q8dd3e edgvbvh9">
+    <a target="_self" href="https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py" style="text-decoration: none">
+        <button class="css-1q8dd3e edgvbvh9">
             Nos recommandations
         </button>
     </a>
