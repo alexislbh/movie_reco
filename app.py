@@ -10,13 +10,7 @@ from PIL import Image
 #st.button('Select',on_click=('https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py'))
 #st.markdown('Essayez notre [algorithme de recommandation](https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py)')
 
-
-
 st.set_page_config(layout="wide", initial_sidebar_state="expanded")
-
-st.title("Movie Reco") 
-
-imdb = pd.read_pickle('./imdb_movie.pkl')
 
 st.write(f'''
     <a target="_self" href="https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py" style="text-decoration: none">
@@ -28,6 +22,10 @@ st.write(f'''
     unsafe_allow_html=True
         )
 
+
+st.title("Movie Reco") 
+
+imdb = pd.read_pickle('./imdb_movie.pkl')
 
 if st.button('Select'):
   webbrowser.open_new_tab('https://google.com')
