@@ -14,13 +14,8 @@ st.set_page_config(
      page_title="Algo recomandation",
      page_icon="🦾",
      layout="wide",
-     initial_sidebar_state="expanded",
-     menu_items={
-         'Data Viz': 'https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py',
-         'Report a bug': "https://www.extremelycoolapp.com/bug",
-         'About': "# This is a header. This is an *extremely* cool app!"
-     }
- )
+     initial_sidebar_state="expanded"
+)
 
 st.write(f'''
     <a target="_self" href="https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py" style="text-decoration: none">
