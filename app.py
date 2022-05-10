@@ -33,15 +33,15 @@ imdb = pd.merge(imdb_movie, imdb_original_language, how="left", on=["tconst"])
 
 setting_name = ['Num Vote','Year','Genres','Rating','Region','Directors','Keyword','Actors']
 settings =[1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0]
-setting_algo = {'Num Vote':1.0,
-                'Year':1.0,
-                'Rating':1.0,
-                'Region':1.0,
-                'Genres':1.0,
-                'Directors':1.0,
-                'Keyword':1.0,
-                'Actors':1.0
-               }
+#setting_algo = {'Num Vote':1.0,
+#                'Year':1.0,
+#                'Rating':1.0,
+#                'Region':1.0,
+#                'Genres':1.0,
+#                'Directors':1.0,
+#                'Keyword':1.0,
+#                'Actors':1.0
+#               }
 
 with st.sidebar:
 #if False:
@@ -52,6 +52,10 @@ with st.sidebar:
   if Actors:
     imdb_actors = pd.read_pickle('./imdb_actors.pkl')
     imdb = pd.merge(imdb, imdb_actors, how="left", on=["tconst"])
+    setting_name.append('Actors')
+  else:
+    if 'Actors' in setting_name:
+      setting_name.remove('Actors')
   if Directors:
     imdb_directors = pd.read_pickle('./imdb_directors.pkl')
     imdb = pd.merge(imdb, imdb_directors, how="left", on=["tconst"])
@@ -72,10 +76,10 @@ for i in range(len(settings)):
   settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.1)
   cols[i].write(settings[i])
 cols = st.columns(len(setting_algo))
-i=0
-for key, value in setting_algo.items():
-   cols[i].number_input(key,value=value,step=0.1)
-   i+=1
+#i=0
+#for key, value in setting_algo.items():
+#   cols[i].number_input(key,value=value,step=0.1)
+#   i+=1
 
 slider_val = st.slider('Choose your number of recomendation', 1, 15, value=5)
 reco_val = slider_val + 1
