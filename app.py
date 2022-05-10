@@ -74,8 +74,7 @@ for i in range(len(settings)):
 cols = st.columns(len(setting_algo))
 i=0
 for key, value in setting_algo.items():
-   if key == True:
-     cols[i].number_input(key,value=value,step=0.1)
+   cols[i].number_input(key,value=value,step=0.1)
    i+=1
 
 slider_val = st.slider('Choose your number of recomendation', 1, 15, value=5)
