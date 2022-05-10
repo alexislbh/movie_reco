@@ -44,10 +44,9 @@ setting_algo = {'Num Vote':1.6,
                }
 
 with st.sidebar:
-#if False:
+  Genres = st.checkbox('Genres',value=True)
   Actors = st.checkbox('Actors')
   Directors = st.checkbox('Directors')
-  Genres = st.checkbox('Genres')
   Keyword = st.checkbox('Keyword')
   if Actors:
     imdb_actors = pd.read_pickle('./imdb_actors.pkl')
@@ -95,11 +94,6 @@ cols = st.columns(len(setting_name))
 for i in range(len(setting_name)):
   settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.1)
   cols[i].write(settings[i])
-#cols = st.columns(len(setting_algo))
-#i=0
-#for key, value in setting_algo.items():
-#   cols[i].number_input(key,value=value,step=0.1)
-#   i+=1
 
 slider_val = st.slider('Choose your number of recomendation', 1, 15, value=5)
 reco_val = slider_val + 1
@@ -111,7 +105,6 @@ with st.sidebar:
   cols1, cols2, cols3, cols4, cols5 = st.columns([1, 3, 1,3,1])
   cols2.metric(label="Rating", value=imdb.averageRating[imdb.title==ans].values[0])
   cols4.metric(label='Year', value=int(imdb.startYear[imdb.title==ans].values[0]))
-  #st.markdown("<h2 style='text-align: center'>{}</h2>".format(imdb[imdb.title==ans].index[0]), unsafe_allow_html=True)
 
 
 #KNN
