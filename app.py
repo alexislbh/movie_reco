@@ -16,9 +16,9 @@ st.set_page_config(
      layout="wide",
      initial_sidebar_state="expanded"
 )
-col1, col2 = st.columns(2)
-col1.write(f'''
-    <a target="_self" href="https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py" style="text-decoration: none">
+
+st.write(f'''
+    <a target="_self" href="https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py" style="text-decoration: none;style=text-align:center">
         <button kind="primary" class="css-1q8dd3e edgvbvh9">
             Nos recommandations
         </button>
@@ -27,13 +27,9 @@ col1.write(f'''
     unsafe_allow_html=True
         )
 
-
 st.title("Movie Reco") 
 
 imdb = pd.read_pickle('./imdb_movie.pkl')
-
-if st.button('Select'):
-  webbrowser.open_new_tab('https://google.com')
 
 #with st.sidebar:
 if False:
