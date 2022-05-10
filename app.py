@@ -70,9 +70,21 @@ with st.sidebar:
   if Genres:
     imdb_genres = pd.read_pickle('./imdb_genres.pkl')
     imdb = pd.merge(imdb, imdb_genres, how="left", on=["tconst"])
+    setting_name.append('Genres')
+    settings.append(setting_algo['Genres'])
+  else:
+    if 'Genres' in setting_name:
+      setting_name.remove('Genres')
+      settings.remove(setting_algo['Genres'])
   if Keyword:
     imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
     imdb = pd.merge(imdb, imdb_movie_keyword, how="left", on=["tconst"])
+    setting_name.append('Keyword')
+    settings.append(setting_algo['Keyword'])
+  else:
+    if 'Keyword' in setting_name:
+      setting_name.remove('Keyword')
+      settings.remove(setting_algo['Keyword'])
 
 
 def get_OMDB(movieID):
