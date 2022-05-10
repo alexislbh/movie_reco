@@ -92,7 +92,7 @@ with st.sidebar:
   cols1, cols2, cols3, cols4, cols5 = st.columns([1, 3, 1,3,1])
   cols2.metric(label="Rating", value=imdb.averageRating[imdb.title==ans].values[0])
   cols4.metric(label='Year', value=int(imdb.startYear[imdb.title==ans].values[0]))
-  st.markdown("<h2 style='text-align: center'>{}</h2>".format(imdb.index.values[0]), unsafe_allow_html=True)
+  st.markdown("<h2 style='text-align: center'>{}</h2>".format(imdb.index), unsafe_allow_html=True)
 
 
 #KNN
