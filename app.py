@@ -43,14 +43,14 @@ with st.sidebar:
   if Directors:
     imdb_directors = pd.read_pickle('./imdb_directors.pkl')
     imdb = pd.merge(imdb, imdb_directors, how="left", on=["tconst"])
-  if genres:
+  if Genres:
     imdb_genres = pd.read_pickle('./imdb_genres.pkl')
     imdb = pd.merge(imdb, imdb_genres, how="left", on=["tconst"])
-  if keyword:
+  if Keyword:
     imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
     imdb = pd.merge(imdb, imdb_movie_keyword, how="left", on=["tconst"])
 
-setting_name = ['Num Vote','Year','Genre','Rating','Region','Réalistaeur','Keyword', 'Actor']
+setting_name = ['Num Vote','Year','Genres','Rating','Region','Directors','Keyword', 'Actors']
 settings =[1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0]
 
 def get_OMDB(movieID):
@@ -92,14 +92,14 @@ def knn_reco(ans):
 
   x_scaled['numVotes'] = x_scaled.numVotes * settings[0]
   x_scaled['startYear'] = x_scaled.startYear * settings[1]
-  if genres:
+  if Genres:
     x_scaled.loc[:,'Action':'Western'] = x_scaled.loc[:,'Action':'Western'] * settings[2]
     x_scaled['Drama'] = x_scaled.Drama * 0.5
   x_scaled['averageRating'] = x_scaled.averageRating * settings[3]
   x_scaled.loc[:,'ab':'zu'] = x_scaled.loc[:,'ab':'zu'] * settings[4]
   if Directors:
     x_scaled.loc[:,'Abbas Kiarostami':'Éric Rohmer'] = x_scaled.loc[:,'Abbas Kiarostami':'Éric Rohmer'] * settings[5]
-  if keyword:    
+  if Keyword:    
     x_scaled.loc[:,'woman director':'summer vacation'] = x_scaled.loc[:,'woman director':'summer vacation'] * settings[6]
   if Actors:
     x_scaled.loc[:,'Aaron Eckhart':'Zac Efron'] = x_scaled.loc[:,'Aaron Eckhart':'Zac Efron'] * settings[7]
