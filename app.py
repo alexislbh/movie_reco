@@ -37,7 +37,7 @@ setting_algo = {'Num Vote':1.6,
                 'Year':1.0,
                 'Rating':0.7,
                 'Region':1.0,
-                'Genres':1,
+                'Genres':1.0,
                 'Directors':1.0,
                 'Keyword':1.0,
                 'Actors':1.0
