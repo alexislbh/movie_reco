@@ -130,8 +130,8 @@ for steps in range(step_range):
     if num == reco_val:
       break
     cols[(num-1) - next_line].markdown("<p style='text-align: center'><b>{}</b>{}<i>{}</i></p>"
-                                       .format(round(newFilm.averageRating.values[num],1),
-                                               newFilm[newfil['ab':'zu']== True].values[num]),
+                                       .format((round(newFilm.averageRating.values[num],1),
+                                               newFilm[newfil['ab':'zu']== True].values[num],
                                                newFilm.startYear.values[num]), unsafe_allow_html=True)
     cols[(num-1) - next_line].image(get_OMDB(newFilm.tconst.values[num])['Poster'], use_column_width = 'auto')
     cols[(num-1) - next_line].markdown("<p style='text-align: center'>{}</p>".format(newFilm.title.values[num]), unsafe_allow_html=True)
