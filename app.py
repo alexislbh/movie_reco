@@ -31,7 +31,8 @@ imdb_movie = pd.read_pickle('./imdb_movie.pkl')
 imdb_original_language = pd.read_pickle('./imdb_original_language.pkl')
 imdb = pd.merge(imdb_movie, imdb_original_language, how="left", on=["tconst"])
 
-with st.sidebar:
+#with st.sidebar:
+  if False:
   Actors = st.checkbox('Base')
   Directors = st.checkbox('Réalisateur')
   genres = st.checkbox('Mots clés')
