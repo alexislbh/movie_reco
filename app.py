@@ -43,9 +43,6 @@ with st.sidebar:
   if Actors:
     imdb_actors = pd.read_pickle('./imdb_actors.pkl')
     imdb = pd.merge(imdb, imdb_actors, how="left", on=["tconst"])
-    setting_name.append('Actors')
-  else:
-    setting_name.remove('Actors')
   if Directors:
     imdb_directors = pd.read_pickle('./imdb_directors.pkl')
     imdb = pd.merge(imdb, imdb_directors, how="left", on=["tconst"])
