@@ -119,7 +119,7 @@ newFilm = knn_reco(ans)
 Data_Debug = st.checkbox('Data Debug')
 if Data_Debug :
   expander = st.expander("Data Debug")
-  expander.write(newFilm[newFilm.iloc[:,8:] == 1])
+  expander.write(newFilm.drop(newFilm.[newFilm.iloc[:,8:] == False], axis=1))
 
 step_range = sum([slider_val//5 if slider_val%5==0 else slider_val//5 +1])
 
