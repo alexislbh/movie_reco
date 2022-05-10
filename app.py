@@ -94,7 +94,7 @@ with st.sidebar:
 def knn_reco(ans):
   global reco_val
   global settings
-  X = imdb.drop(['tconst','title','genres'], axis =1)
+  X = imdb.drop(['tconst','title','genres','original_language'], axis =1)
 
   scale = StandardScaler().fit(X) 
   X_scaled = scale.transform(X)
