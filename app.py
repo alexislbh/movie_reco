@@ -102,7 +102,7 @@ def knn_reco(ans):
     x_scaled.loc[:,'woman director':'summer vacation'] = x_scaled.loc[:,'woman director':'summer vacation'] * settings[6]
   if Actors:
     x_scaled.loc[:,'Aaron Eckhart':'Zac Efron'] = x_scaled.loc[:,'Aaron Eckhart':'Zac Efron'] * settings[7]
-  x_scaled['Drama'] = x_scaled.Drama * 0.5
+  #x_scaled['Drama'] = x_scaled.Drama * 0.5
   
   distanceKNN = NearestNeighbors(n_neighbors=reco_val).fit(X_scaled)
 
