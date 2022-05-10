@@ -33,13 +33,13 @@ imdb = pd.merge(imdb_movie, imdb_original_language, how="left", on=["tconst"])
 
 setting_name = ['Num Vote','Year','Genres','Rating','Region','Directors','Keyword','Actors']
 settings =[1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0]
-setting_algo = {'Num Vote':1.0
-                'Year':1.0
-                'Rating':1.0
-                'Region':1.0
-                'Genres':1.0
-                'Directors':1.0
-                'Keyword':1.0
+setting_algo = {'Num Vote':1.0,
+                'Year':1.0,
+                'Rating':1.0,
+                'Region':1.0,
+                'Genres':1.0,
+                'Directors':1.0,
+                'Keyword':1.0,
                 'Actors':1.0
                }
 
