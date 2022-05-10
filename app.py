@@ -139,7 +139,7 @@ def knn_reco(ans):
   if Directors:
     x_scaled.loc[:,'Abbas Kiarostami':'Éric Rohmer'] = x_scaled.loc[:,'Abbas Kiarostami':'Éric Rohmer'] * settings[setting_name.index('Directors')]
   if Keyword:    
-    x_scaled.loc[:,'woman director':'summer vacation'] = x_scaled.loc[:,'woman director':'summer vacation'] * settings[setting_name.index('Keyword')]
+    x_scaled.loc[:,'woman director':'dirty cop'] = x_scaled.loc[:,'woman director':'dirty cop'] * settings[setting_name.index('Keyword')]
   if Actors:
     x_scaled.loc[:,'Aaron Eckhart':'Zac Efron'] = x_scaled.loc[:,'Aaron Eckhart':'Zac Efron'] * settings[setting_name.index('Actors')]
   
