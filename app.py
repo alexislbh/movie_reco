@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 import requests
-import webbrowser
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import NearestNeighbors
 from PIL import Image
@@ -115,8 +114,10 @@ def knn_reco(ans):
 
 newFilm = knn_reco(ans)
 
-expander = st.expander("Data Debug")
-expander.write(newFilm)
+Data Debug = st.checkbox('Data Debug')
+if Data Debug:
+  expander = st.expander("Data Debug")
+  expander.write(newFilm)
 
 step_range = sum([slider_val//5 if slider_val%5==0 else slider_val//5 +1])
 
