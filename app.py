@@ -50,26 +50,6 @@ with st.sidebar:
     imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
     imdb = pd.merge(imdb, imdb_movie_keyword, how="left", on=["tconst"])
 
-#with st.sidebar:
-if False:
-  genre = st.radio("Algo fonctionnement", ('Tout', 'real', 'Keyword', 'Rien'))
-  if genre == 'Tout':
-    imdb_movie = pd.read_pickle('./imdb_movie.pkl')
-    imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
-    imdb = pd.merge(imdb_movie, imdb_movie_keyword, how="inner", on=["tconst"])
-  elif genre == 'real':
-    imdb = pd.read_pickle('./imdb_movie.pkl')
-  elif genre == 'Keyword':
-    imdb_movie = pd.read_pickle('./imdb_movie.pkl')
-    imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
-    imdb = pd.merge(imdb_movie, imdb_movie_keyword, how="inner", on=["tconst"])
-    imdb = imdb.drop(columns=imdb.iloc[:,8:30].columns)
-  elif genre == 'Rien':
-    imdb_movie = pd.read_pickle('./imdb_movie.pkl')
-    imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
-    imdb = pd.merge(imdb_movie, imdb_movie_keyword, how="inner", on=["tconst"])
-    imdb = imdb.drop(columns=imdb.iloc[:,8:].columns)
-
 setting_name = ['Num Vote','Year','Genre','Rating','Region','Réalistaeur','Keyword', 'Actor']
 settings =[1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0]
 
@@ -106,14 +86,15 @@ def knn_reco(ans):
 
   x_scaled = pd.DataFrame(X_scaled, columns=X.columns)
 
-  #x_scaled['numVotes'] = x_scaled.numVotes * settings[0]
-  #x_scaled['startYear'] = x_scaled.startYear * settings[1]
-  #x_scaled.iloc[:,8:30] = x_scaled.iloc[:,8:30] * settings[2]
-  #x_scaled['averageRating'] = x_scaled.averageRating * settings[3]
-  #x_scaled.iloc[:,30:96] = x_scaled.iloc[:,30:96] * settings[4]
-  #x_scaled.iloc[:,96:817] = x_scaled.iloc[:,96:817] * settings[5]
-  #x_scaled.iloc[:,817:] = x_scaled.iloc[:,817:] * settings[6]
-  #x_scaled['Drama'] = x_scaled.numVotes * 0.2
+  x_scaled['numVotes'] = x_scaled.numVotes * settings[0]
+  x_scaled['startYear'] = x_scaled.startYear * settings[1]
+  x_scaled.loc[:,'Action':'Western'] = x_scaled.loc[:,'Action':'Western'] * settings[2]
+  x_scaled['averageRating'] = x_scaled.averageRating * settings[3]
+  x_scaled.loc[:,'ab':'zu'] = x_scaled.loc[:,'ab':'zu'] * settings[4]
+  x_scaled.loc[:,'Abbas Kiarostami':'Éric Rohmer'] = x_scaled.loc[:,'Abbas Kiarostami':'Éric Rohmer'] * settings[5]
+  x_scaled.loc[:,'woman director':'summer vacation'] = x_scaled.loc[:,'woman director':'summer vacation'] * settings[6]
+  x_scaled.loc[:,'Aaron Eckhart':'Zac Efron'] = x_scaled.loc[:,'Aaron Eckhart':'Zac Efron'] * settings[7]
+  x_scaled['Drama'] = x_scaled.Drama * 0.5
   
   distanceKNN = NearestNeighbors(n_neighbors=reco_val).fit(X_scaled)
 
