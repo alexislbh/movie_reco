@@ -75,7 +75,7 @@ cols = st.columns(len(settings))
 for i in range(len(settings)):
   settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.1)
   cols[i].write(settings[i])
-cols = st.columns(len(setting_algo))
+#cols = st.columns(len(setting_algo))
 #i=0
 #for key, value in setting_algo.items():
 #   cols[i].number_input(key,value=value,step=0.1)
