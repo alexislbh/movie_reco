@@ -31,6 +31,9 @@ imdb_movie = pd.read_pickle('./imdb_movie.pkl')
 imdb_original_language = pd.read_pickle('./imdb_original_language.pkl')
 imdb = pd.merge(imdb_movie, imdb_original_language, how="left", on=["tconst"])
 
+setting_name = ['Num Vote','Year','Genres','Rating','Region','Directors','Keyword']
+settings =[1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0]
+
 with st.sidebar:
 #if False:
   Actors = st.checkbox('Actors')
@@ -40,6 +43,9 @@ with st.sidebar:
   if Actors:
     imdb_actors = pd.read_pickle('./imdb_actors.pkl')
     imdb = pd.merge(imdb, imdb_actors, how="left", on=["tconst"])
+    setting_name.append('Actors')
+  else:
+    setting_name.remove('Actors')
   if Directors:
     imdb_directors = pd.read_pickle('./imdb_directors.pkl')
     imdb = pd.merge(imdb, imdb_directors, how="left", on=["tconst"])
