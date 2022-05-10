@@ -91,8 +91,8 @@ def get_OMDB(movieID):
   OMDB = requests.get('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + st.secrets["key"]).json()
   return OMDB
   
-cols = st.columns(len(settings))
-for i in range(len(settings)):
+cols = st.columns(len(setting_name))
+for i in range(len(setting_name)):
   settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.1)
   cols[i].write(settings[i])
 #cols = st.columns(len(setting_algo))
@@ -132,7 +132,7 @@ def knn_reco(ans):
   x_scaled['numVotes'] = x_scaled.numVotes * settings[0]
   x_scaled['startYear'] = x_scaled.startYear * settings[1]
   if Genres:
-    x_scaled.loc[:,'Action':'Western'] = x_scaled.loc[:,'Action':'Western'] * settings[2]
+    x_scaled.loc[:,'Action':'Western'] = x_scaled.loc[:,'Action':'Western'] * settings[setting_name.index('Genres')]
     x_scaled['Drama'] = x_scaled.Drama * 0.5
   x_scaled['averageRating'] = x_scaled.averageRating * settings[3]
   x_scaled.loc[:,'ab':'zu'] = x_scaled.loc[:,'ab':'zu'] * settings[4]
