@@ -97,7 +97,7 @@ for i in range(len(setting_name)):
 
 slider_val = st.slider('Choose your number of recomendation', 1, 15, value=5)
 reco_val = slider_val + 1
-ans = st.selectbox ('Votre film préféré', [imdb.title,imdb.startYear] , index=21301)
+ans = st.selectbox ('Votre film préféré', imdb.title , index=21301)
 
 with st.sidebar:
   st.markdown("<h2 style='text-align: center'>{}</h2>".format(imdb.title[imdb.title==ans].values[0]), unsafe_allow_html=True)
