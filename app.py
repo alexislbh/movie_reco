@@ -94,6 +94,7 @@ def knn_reco(ans):
   x_scaled['startYear'] = x_scaled.startYear * settings[1]
   if genres:
     x_scaled.loc[:,'Action':'Western'] = x_scaled.loc[:,'Action':'Western'] * settings[2]
+    x_scaled['Drama'] = x_scaled.Drama * 0.5
   x_scaled['averageRating'] = x_scaled.averageRating * settings[3]
   x_scaled.loc[:,'ab':'zu'] = x_scaled.loc[:,'ab':'zu'] * settings[4]
   if Directors:
@@ -102,7 +103,7 @@ def knn_reco(ans):
     x_scaled.loc[:,'woman director':'summer vacation'] = x_scaled.loc[:,'woman director':'summer vacation'] * settings[6]
   if Actors:
     x_scaled.loc[:,'Aaron Eckhart':'Zac Efron'] = x_scaled.loc[:,'Aaron Eckhart':'Zac Efron'] * settings[7]
-  #x_scaled['Drama'] = x_scaled.Drama * 0.5
+  
   
   distanceKNN = NearestNeighbors(n_neighbors=reco_val).fit(X_scaled)
 
