@@ -134,8 +134,8 @@ def knn_reco(ans):
   if Genres:
     x_scaled.loc[:,'Action':'Western'] = x_scaled.loc[:,'Action':'Western'] * settings[setting_name.index('Genres')]
     x_scaled['Drama'] = x_scaled.Drama * 0
-  x_scaled['averageRating'] = x_scaled.averageRating * settings[3]
-  x_scaled.loc[:,'ab':'zu'] = x_scaled.loc[:,'ab':'zu'] * settings[4]
+  x_scaled['averageRating'] = x_scaled.averageRating * settings[2]
+  x_scaled.loc[:,'ab':'zu'] = x_scaled.loc[:,'ab':'zu'] * settings[3]
   if Directors:
     x_scaled.loc[:,'Abbas Kiarostami':'Éric Rohmer'] = x_scaled.loc[:,'Abbas Kiarostami':'Éric Rohmer'] * settings[setting_name.index('Directors')]
   if Keyword:    
