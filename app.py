@@ -42,7 +42,7 @@ setting_algo = {'Num Vote':4,
                 'Keyword':1,
                 'Actors':2
                }
-st.table(imdb.head())
+st.table(imdb.iloc[:,:8].head())
 
 with st.sidebar:
   Genres = st.checkbox('Genres',value=True)
