@@ -159,7 +159,7 @@ newFilm = knn_reco(ans)
 
 line_range = sum([slider_val//5 if slider_val%5==0 else slider_val//5 +1])
 
-for lines in range(step_range):
+for lines in range(line_range):
   next_line = lines * 5
   cols = st.columns(5)
   for num in range(1 + next_line,6 + next_line):
