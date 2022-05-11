@@ -104,7 +104,7 @@ def get_OMDB(movieID):
 
 cols = st.columns(len(setting_name))
 for i in range(len(setting_name)):
-  key = cols[i].selectbox(setting_name[i],avis_w.keys())
+  key = cols[i].selectbox(setting_name[i],avis_w.keys(i))
   settings[i] = avis_w[key] 
   #settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.1)
   cols[i].write(settings[i])
