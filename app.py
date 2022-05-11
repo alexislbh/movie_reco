@@ -13,12 +13,11 @@ st.set_page_config(
      initial_sidebar_state="expanded"
 )
 
-st.button('label')
-
+#st.button('label')
 st.write(f'''
     <a target="_self" href="https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py" style="text-decoration: none;color:white">
         <button kind="primary" class="css-1q8dd3e edgvbvh9" style=text-align:center">
-            Dataset  &  Dataviz
+            Data Analysis
         </button>
     </a>
     ''',
