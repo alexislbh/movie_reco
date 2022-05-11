@@ -104,11 +104,11 @@ def get_OMDB(movieID):
 
 cols = st.columns(len(setting_name))
 for i in range(len(setting_name)):
-  for k,v in avis_w.items()
-  key = cols[i].selectbox(setting_name[i],v)
-  settings[i] = avis_w[key] 
-  #settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.1)
-  cols[i].write(settings[i])
+  for k,v in avis_w.items():
+     key = cols[i].selectbox(setting_name[i],v)
+     settings[i] = avis_w[key] 
+     #settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.1)
+      cols[i].write(settings[i])
 
 slider_val = st.slider('Choose your number of recomendation', 1, 15, value=5)
 reco_val = slider_val + 1
