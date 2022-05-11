@@ -24,7 +24,7 @@ st.write(f'''
     unsafe_allow_html=True
         )
 st.button('')
-
+st.markdown("<h1 style='text-align: center;font-size:30px;'> JAO Data : Alexis Le Bihan, Julien Reppert, Oscar Arnoux</h1>", unsafe_allow_html=True)
 st.title("Recommandation de films")
 st.markdown("<h1 style='text-align: center;font-size:30px;'> JAO Data : Alexis Le Bihan, Julien Reppert, Oscar Arnoux</h1>", unsafe_allow_html=True)
 
