@@ -112,15 +112,15 @@ for i in range(len(setting_name)):
 
 slider_val = st.slider('Choose your number of recomendation', 1, 15, value=5)
 reco_val = slider_val + 1
-ans = st.selectbox ('Votre film préféré', imdb.search, index=21301)
+ans = st.selectbox ('Votre film préféré', imdb.titleView, index=21301)
 #st.write(ans)
 
 with st.sidebar:
-  st.markdown("<h2 style='text-align: center'>{}</h2>".format(imdb.title[imdb.search==ans].values[0]), unsafe_allow_html=True)
-  st.image(get_OMDB(imdb.tconst[imdb.search==ans].values[0])['Poster'], use_column_width = 'auto')
+  st.markdown("<h2 style='text-align: center'>{}</h2>".format(imdb.title[imdb.titleView==ans].values[0]), unsafe_allow_html=True)
+  st.image(get_OMDB(imdb.tconst[imdb.titleView==ans].values[0])['Poster'], use_column_width = 'auto')
   cols1, cols2, cols3, cols4, cols5 = st.columns([1, 3, 1,3,1])
-  cols2.metric(label="Rating", value=imdb.averageRating[imdb.search==ans].values[0])
-  cols4.metric(label='Year', value=int(imdb.startYear[imdb.search==ans].values[0]))
+  cols2.metric(label="Rating", value=imdb.averageRating[imdb.titleView==ans].values[0])
+  cols4.metric(label='Year', value=int(imdb.startYear[imdb.titleView==ans].values[0]))
 
 
 #KNN
@@ -131,7 +131,7 @@ def knn_reco(ans):
   global Directors
   global genres
   global keyword
-  X = imdb.drop(['tconst','title','genres','original_language','search'], axis =1)
+  X = imdb.drop(['tconst','title','genres','original_language','titleView'], axis =1)
 
   scale = StandardScaler().fit(X) 
   X_scaled = scale.transform(X)
@@ -156,7 +156,7 @@ def knn_reco(ans):
   
   distanceKNN = NearestNeighbors(n_neighbors=reco_val).fit(X_scaled)
 
-  predict = distanceKNN.kneighbors(X_scaled[imdb.search == ans])
+  predict = distanceKNN.kneighbors(X_scaled[imdb.titleView == ans])
   
   newFilm = pd.DataFrame([imdb.iloc[predict[1][0][i],:] for i in range(reco_val)],columns = imdb.columns) 
   
