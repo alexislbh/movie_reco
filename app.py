@@ -23,6 +23,13 @@ st.write(f'''
     ''',
     unsafe_allow_html=True
         )
+st.button(f'''
+    <a target="_self" href="https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py" style="text-decoration: none;color:white">
+        <button class="css-1q8dd3e edgvbvh9 button" style=text-align:center">
+            Data Analysis
+        </button>
+    </a>
+    ''')
 
 st.title("Movie Reco")
 
@@ -47,17 +54,16 @@ with st.sidebar:
   Actors = st.checkbox('Actors')
   Directors = st.checkbox('Directors')
   Keyword = st.checkbox('Keyword')
-     
-  #def set_algo(set)
-  #   if Actors:
-  #  imdb_actors = pd.read_pickle('./imdb_actors.pkl')
-  #  imdb = pd.merge(imdb, imdb_actors, how="left", on=["tconst"])
-  #  setting_name.append('Actors')
-  #  settings.append(setting_algo['Actors'])
+#Actors = pd.read_pickle('./imdb_actors.pkl')
+  #def set_algo(info)
+  #   if info:
+  #  imdb = pd.merge(imdb, info, how="left", on=["tconst"])
+  #  setting_name.append('info')
+  #  settings.append(setting_algo['info'])
   #else:
-  #  if 'Actors' in setting_name:
-  #    setting_name.remove('Actors')
-  #    settings.remove(setting_algo['Actors'])
+  #  if 'info' in setting_name:
+  #    setting_name.remove('info')
+  #    settings.remove(setting_algo['info'])
 
   if Actors:
     imdb_actors = pd.read_pickle('./imdb_actors.pkl')
