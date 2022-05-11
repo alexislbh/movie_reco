@@ -26,6 +26,7 @@ st.write(f'''
 st.button('')
 st.markdown("<h1 style='text-align: center;font-size:30px;'> JAO Data : Alexis Le Bihan, Julien Reppert, Oscar Arnoux</h1>", unsafe_allow_html=True)
 st.title("Recommandation de films")
+st.subheader('Option : Ajuster les poids')
 
 imdb_movie = pd.read_pickle('./imdb_movie.pkl')
 imdb_original_language = pd.read_pickle('./imdb_original_language.pkl')
