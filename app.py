@@ -49,6 +49,18 @@ with st.sidebar:
   Actors = st.checkbox('Actors')
   Directors = st.checkbox('Directors')
   Keyword = st.checkbox('Keyword')
+     
+  #def set_algo(set)
+  #   if Actors:
+  #  imdb_actors = pd.read_pickle('./imdb_actors.pkl')
+  #  imdb = pd.merge(imdb, imdb_actors, how="left", on=["tconst"])
+  #  setting_name.append('Actors')
+  #  settings.append(setting_algo['Actors'])
+  #else:
+  #  if 'Actors' in setting_name:
+  #    setting_name.remove('Actors')
+  #    settings.remove(setting_algo['Actors'])
+
   if Actors:
     imdb_actors = pd.read_pickle('./imdb_actors.pkl')
     imdb = pd.merge(imdb, imdb_actors, how="left", on=["tconst"])
