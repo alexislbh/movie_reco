@@ -23,13 +23,6 @@ st.write(f'''
     ''',
     unsafe_allow_html=True
         )
-st.button(f'''
-    <a target="_self" href="https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py" style="text-decoration: none;color:white">
-        <button class="css-1q8dd3e edgvbvh9 button" style=text-align:center">
-            Data Analysis
-        </button>
-    </a>
-    ''')
 
 st.title("Movie Reco")
 
