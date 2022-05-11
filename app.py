@@ -7,7 +7,7 @@ from sklearn.neighbors import NearestNeighbors
 from PIL import Image
 
 st.set_page_config(
-     page_title="Algo recomandation",
+     page_title="Recommandation de films",
      page_icon="🦾",
      layout="wide",
      initial_sidebar_state="expanded"
@@ -23,8 +23,10 @@ st.write(f'''
     ''',
     unsafe_allow_html=True
         )
+st.button('')
 
-st.title("Movie Reco")
+st.title("Recommandation de films")
+st.markdown("<h1 style='text-align: center;font-size:30px;'> JAO Data : Alexis Le Bihan, Julien Reppert, Oscar Arnoux</h1>", unsafe_allow_html=True)
 
 imdb_movie = pd.read_pickle('./imdb_movie.pkl')
 imdb_original_language = pd.read_pickle('./imdb_original_language.pkl')
@@ -44,9 +46,9 @@ setting_algo = {'Num Vote':1.7,
 
 with st.sidebar:
   Genres = st.checkbox('Genres',value=True)
-  Actors = st.checkbox('Actors')
-  Directors = st.checkbox('Directors')
-  Keyword = st.checkbox('Keyword')
+  Actors = st.checkbox('Acteurs')
+  Directors = st.checkbox('Réalisateurs')
+  Keyword = st.checkbox('Mots-clés')
 #Actors = pd.read_pickle('./imdb_actors.pkl')
   #def set_algo(info)
   #   if info:
@@ -105,7 +107,7 @@ for i in range(len(setting_name)):
    settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.3)
  # cols[i].write(settings[i])
 
-slider_val = st.slider('Choose your number of recomendation', 1, 15, value=5)
+slider_val = st.slider('Choisissez le nombre de films à recommander', 1, 15, value=5)
 reco_val = slider_val + 1
 ans = st.selectbox ('Votre film préféré', imdb.titleView, index=21301)
 #st.write(ans)
@@ -159,9 +161,9 @@ def knn_reco(ans):
 
 newFilm = knn_reco(ans)
 
-Data_Debug = st.checkbox('Data Debug')
+Data_Debug = st.checkbox('Informations brutes')
 if Data_Debug :
-  expander = st.expander("Data Debug")
+  expander = st.expander("Informations brutes")
   expander.write(newFilm)
 
 line_range = sum([slider_val//5 if slider_val%5==0 else slider_val//5 +1])
