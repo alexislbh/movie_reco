@@ -157,10 +157,10 @@ newFilm = knn_reco(ans)
 #  expander = st.expander("Data Debug")
 #  expander.write(newFilm)
 
-step_range = sum([slider_val//5 if slider_val%5==0 else slider_val//5 +1])
+line_range = sum([slider_val//5 if slider_val%5==0 else slider_val//5 +1])
 
-for steps in range(step_range):
-  next_line = steps * 5
+for lines in range(step_range):
+  next_line = lines * 5
   cols = st.columns(5)
   for num in range(1 + next_line,6 + next_line):
     if num == reco_val:
