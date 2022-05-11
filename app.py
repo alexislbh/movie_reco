@@ -30,7 +30,7 @@ imdb_movie = pd.read_pickle('./imdb_movie.pkl')
 imdb_original_language = pd.read_pickle('./imdb_original_language.pkl')
 imdb = pd.merge(imdb_movie, imdb_original_language, how="left", on=["tconst"])
 
-avis_w = {'Très peu':0.3,'peu':0.7,'Neutre':1.0,'moyen':1.3,'beaucoup':1.7}
+avis_w = {'basics':1,'Très peu':0.3,'peu':0.7,'Neutre':1.0,'moyen':1.3,'beaucoup':1.7}
 setting_name = ['Num Vote','Year','Rating','Region']
 settings =[1.7,1.0,1.0,0.7]
 setting_algo = {'Num Vote':4,
