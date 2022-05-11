@@ -32,8 +32,8 @@ imdb_original_language = pd.read_pickle('./imdb_original_language.pkl')
 imdb = pd.merge(imdb_movie, imdb_original_language, how="left", on=["tconst"])
 
 setting_name = ['Num Vote','Year','Rating','Region']
-settings =[1.6,1.0,1.0,0.7]
-setting_algo = {'Num Vote':1.6,
+settings =[1.7,1.0,1.0,0.7]
+setting_algo = {'Num Vote':1.7,
                 'Year':1.0,
                 'Rating':0.7,
                 'Region':1.0,
@@ -93,7 +93,7 @@ def get_OMDB(movieID):
 avis_w = [0.3,0.7,1.0,1.3,1.7]
 cols = st.columns(len(setting_name))
 for i in range(len(setting_name)):
-  settings[i] = st.selectbox(setting_name[i],avis_w)
+  settings[i] = st.selectbox(setting_name[i],avis_w,index=settings[i] )
   #settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.1)
   cols[i].write(settings[i])
 
