@@ -138,8 +138,8 @@ def knn_reco(ans):
   x_scaled['startYear'] = x_scaled.startYear * settings[1]
   if Genres:
     x_scaled.loc[:,'Action':'Western'] = x_scaled.loc[:,'Action':'Western'] * settings[setting_name.index('Genres')]
-    x_scaled['Drama'] = x_scaled.Drama * 0
-    x_scaled['Drama'] = x_scaled.Animation * 2
+    x_scaled['Drama'] = x_scaled.Drama * 0.3
+    x_scaled['Animation'] = x_scaled.Animation * 2
   x_scaled['averageRating'] = x_scaled.averageRating * settings[2]
   x_scaled.loc[:,'ab':'zu'] = x_scaled.loc[:,'ab':'zu'] * settings[3]
   if Directors:
