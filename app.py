@@ -100,7 +100,7 @@ for i in range(len(setting_name)):
 
 slider_val = st.slider('Choose your number of recomendation', 1, 15, value=5)
 reco_val = slider_val + 1
-ans = st.selectbox ('Votre film préféré', imdb.search)#, index=21301)
+ans = st.selectbox ('Votre film préféré', imdb.search, index=21301)
 #st.write(ans)
 
 with st.sidebar:
