@@ -32,6 +32,15 @@ imdb = pd.merge(imdb_movie, imdb_original_language, how="left", on=["tconst"])
 
 setting_name = ['Num Vote','Year','Rating','Region']
 settings =[1.7,1.0,1.0,0.7]
+setting_algo = {'Num Vote':1.7,
+                'Year':1.0,
+                'Rating':1.0,
+                'Region':0.7,
+                'Genres':1.0,
+                'Directors':1.0,
+                'Keyword':1.0,
+                'Actors':1.0
+               }
 
 with st.sidebar:
   Genres = st.checkbox('Genres',value=True)
@@ -94,7 +103,7 @@ def get_OMDB(movieID):
 
 cols = st.columns(len(setting_name))
 for i in range(len(setting_name)):
-   settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.1)
+   settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.3)
  # cols[i].write(settings[i])
 
 slider_val = st.slider('Choose your number of recomendation', 1, 15, value=5)
