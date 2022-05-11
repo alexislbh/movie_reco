@@ -13,10 +13,8 @@ st.set_page_config(
      initial_sidebar_state="expanded"
 )
 
-col1, col2 = st.columns(2)
-col1.title("Movie Reco") 
 
-col2.write(f'''
+st.write(f'''
     <a target="_self" href="https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py" style="text-decoration: none;color:white">
         <button class="css-1q8dd3e edgvbvh9 button" style=text-align:center">
             Data Analysis
@@ -25,6 +23,8 @@ col2.write(f'''
     ''',
     unsafe_allow_html=True
         )
+
+st.title("Movie Reco")
 
 imdb_movie = pd.read_pickle('./imdb_movie.pkl')
 imdb_original_language = pd.read_pickle('./imdb_original_language.pkl')
