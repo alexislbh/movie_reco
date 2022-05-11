@@ -90,10 +90,10 @@ def get_OMDB(movieID):
   OMDB = requests.get('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + st.secrets["key"]).json()
   return OMDB
 
-avis_w = {0.3:'Très peu',0.7:'peu',1.0:'Neutre',1.3:'moyen',1.7:'beaucoup'}
+avis_w = [0.3,0.7,1.0,1.3,1.7]
 cols = st.columns(len(setting_name))
 for i in range(len(setting_name)):
-  settings[i] = st.selectbox(setting_name[i],avis_w.keys())
+  settings[i] = st.selectbox(setting_name[i],avis_w)
   #settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.1)
   cols[i].write(settings[i])
 
