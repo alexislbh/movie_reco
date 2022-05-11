@@ -107,7 +107,7 @@ for i in range(len(setting_name)):
   #settings[i] = cols[i].selectbox(setting_name[i],list(avis_w.values())[i])
   #settings[i] = avis_w[key] 
   settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.3)
-  cols[i].write(settings[i])
+ # cols[i].write(settings[i])
 
 slider_val = st.slider('Choose your number of recomendation', 1, 15, value=5)
 reco_val = slider_val + 1
