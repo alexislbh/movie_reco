@@ -13,7 +13,6 @@ st.set_page_config(
      initial_sidebar_state="expanded"
 )
 
-#st.button('label')
 st.write(f'''
     <a target="_self" href="https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py" style="text-decoration: none;color:white">
         <button class="css-1q8dd3e edgvbvh9 button" style=text-align:center">
@@ -100,7 +99,7 @@ for i in range(len(setting_name)):
 slider_val = st.slider('Choose your number of recomendation', 1, 15, value=5)
 reco_val = slider_val + 1
 ans = st.selectbox ('Votre film préféré', imdb.search, index=21301)
-st.write(ans)
+#st.write(ans)
 
 with st.sidebar:
   st.markdown("<h2 style='text-align: center'>{}</h2>".format(imdb.title[imdb.search==ans].values[0]), unsafe_allow_html=True)
@@ -151,10 +150,10 @@ def knn_reco(ans):
 
 newFilm = knn_reco(ans)
 
-Data_Debug = st.checkbox('Data Debug')
-if Data_Debug :
-  expander = st.expander("Data Debug")
-  expander.write(newFilm)
+#Data_Debug = st.checkbox('Data Debug')
+#if Data_Debug :
+#  expander = st.expander("Data Debug")
+#  expander.write(newFilm)
 
 step_range = sum([slider_val//5 if slider_val%5==0 else slider_val//5 +1])
 
