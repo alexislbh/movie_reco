@@ -93,7 +93,7 @@ def get_OMDB(movieID):
 avis_w = {'Très peu':0.3,'peu':0.7,'Neutre':1.0,'moyen':1.3,'beaucoup':1.7}
 cols = st.columns(len(setting_name))
 for i in range(len(setting_name)):
-  settings[i] = st.selectbox(setting_name[i],avis_w.values(), format_func=lambda x: avis_w.keys(x))
+  settings[i] = st.selectbox(setting_name[i],avis_w.values(), format_func=lambda x: map(d[x], avis_w.keys()))
   settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.1)
   cols[i].write(settings[i])
 
