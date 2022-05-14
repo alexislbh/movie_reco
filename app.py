@@ -6,6 +6,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import NearestNeighbors
 from PIL import Image
 
+### Page Setup
 st.set_page_config(
      page_title="Recommandation de films",
      page_icon="🦾",
@@ -14,23 +15,29 @@ st.set_page_config(
 )
 
 
-st.write(f'''
-    <a target="_self" href="https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py" style="text-decoration: none;color:white">
-        <button class="css-1q8dd3e edgvbvh9 button" style=text-align:center">
-            Data Analysis
-        </button>
-    </a>
-    ''',
-    unsafe_allow_html=True
-        )
-st.button('')
+#st.write(f'''
+#    <a target="_self" href="https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py" style="text-decoration: none;color:white">
+#        <button class="css-1q8dd3e edgvbvh9 button" style=text-align:center">
+#            Data Analysis
+#        </button>
+#    </a>
+#    ''',
+#    unsafe_allow_html=True
+#        )
+#st.button('')
+
+
+
 st.title("Recommandation de films")
+
 st.subheader('Option : Ajuster les poids')
 
+### Charger les datasets de base
 imdb_movie = pd.read_pickle('./imdb_movie.pkl')
 imdb_original_language = pd.read_pickle('./imdb_original_language.pkl')
 imdb = pd.merge(imdb_movie, imdb_original_language, how="left", on=["tconst"])
 
+### réglages des poids par defauts
 setting_name = ['Num Vote','Year','Rating','Region']
 settings =[1.7,1.0,1.0,0.7]
 setting_algo = {'Num Vote':1.7,
@@ -43,6 +50,7 @@ setting_algo = {'Num Vote':1.7,
                 'Actors':1.0
                }
 
+### Chargement de datasets suplémentaires
 with st.sidebar:
   Genres = st.checkbox('Genres',value=True)
   Actors = st.checkbox('Acteurs')
@@ -96,21 +104,24 @@ with st.sidebar:
       setting_name.remove('Keyword')
       settings.remove(setting_algo['Keyword'])
 
-
+### Récuperer les informations depuis OMDB API
 def get_OMDB(movieID):
   OMDB = requests.get('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + st.secrets["key"]).json()
   return OMDB
 
+### Regales de la gestion des poids utilisateurs 'Front End'
 cols = st.columns(len(setting_name))
 for i in range(len(setting_name)):
    settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.3)
  # cols[i].write(settings[i])
 
+### Slider choix du nombre de recommendation
 slider_val = st.slider('Choisissez le nombre de films à recommander', 1, 15, value=5)
 reco_val = slider_val + 1
 ans = st.selectbox ('Votre film préféré', imdb.titleView, index=21301)
 #st.write(ans)
 
+### Présentation du film choisit
 with st.sidebar:
   st.markdown("<h2 style='text-align: center'>{}</h2>".format(imdb.title[imdb.titleView==ans].values[0]), unsafe_allow_html=True)
   st.image(get_OMDB(imdb.tconst[imdb.titleView==ans].values[0])['Poster'], use_column_width = 'auto')
@@ -119,21 +130,24 @@ with st.sidebar:
   cols4.metric(label='Year', value=int(imdb.startYear[imdb.titleView==ans].values[0]))
 
 
-#KNN
+### KNN - K-nearest neighbors - Algorithme des K plus proches voisins - Déclaré dans une fonction
 def knn_reco(ans):
+  ### Variables exterieures à la fonction
   global reco_val
   global settings
   global Actors
   global Directors
   global genres
   global keyword
+     
   X = imdb.drop(['tconst','title','genres','original_language','titleView'], axis =1)
 
   scale = StandardScaler().fit(X) 
   X_scaled = scale.transform(X)
 
   x_scaled = pd.DataFrame(X_scaled, columns=X.columns)
-
+  
+  ### Réglage des poids directement dans l'algo
   x_scaled['numVotes'] = x_scaled.numVotes * settings[0]
   x_scaled['startYear'] = x_scaled.startYear * settings[1]
   if Genres:
@@ -160,11 +174,15 @@ def knn_reco(ans):
 
 newFilm = knn_reco(ans)
 
-Data_Debug = st.checkbox('Informations brutes')
-if Data_Debug :
-  expander = st.expander("Informations brutes")
-  expander.write(newFilm)
+### Afficher du Datafraame 'newFilm pour vérifier des infos
+#Data_Debug = st.checkbox('Informations brutes')
+#if Data_Debug :
+#  expander = st.expander("Informations brutes")
+#  expander.write(newFilm)
 
+### ------ Affichae des réponses de recomendation ------ ###
+
+##Nombre de lignes à afficher en fonction du choix de reco (5 par lignes)
 line_range = sum([slider_val//5 if slider_val%5==0 else slider_val//5 +1])
 
 for lines in range(line_range):
