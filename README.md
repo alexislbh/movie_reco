@@ -15,10 +15,18 @@ Vous trouverai l'aplication [ici](https://share.streamlit.io/pilouliz/movie_reco
 
 Ce projet a été réaliser dans le cadre du Projet 2 de ma formation Data Analyst à la Wild Code School avec :
 
-|| Nom |                                                | C'est une applicationde recomendation de film, basée sur les datasets d'IMDB.
-L'application permert de proposer de 5 à 15 recomendations en fonction d'un titre de film.|
+| Nom |
 | :--- |
 | [Alexis Le Bihan](https://github.com/Pilouliz) |
 | [Oscar Arnoux](https://github.com/OscarArnoux8) | 
 | Julien Ripert |
+
+|| Nom |
+| :--- |
+| [Alexis Le Bihan](https://github.com/Pilouliz) |
+| [Oscar Arnoux](https://github.com/OscarArnoux8) | 
+| Julien Ripert ||# Movie recomendation
+
+C'est une applicationde recomendation de film, basée sur les datasets d'IMDB.
+L'application permert de proposer de 5 à 15 recomendations en fonction d'un titre de film.|
 
