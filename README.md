@@ -19,10 +19,5 @@ Ce projet a été réaliser dans le cadre du Projet 2 de ma formation Data Analy
 | :--- |
 | [Alexis Le Bihan](https://github.com/Pilouliz) |
 | [Oscar Arnoux](https://github.com/OscarArnoux8) | 
-| [Julien Ripert] |
+| Julien Ripert |
 
-
-Features :
-- [x] Write the press release
-- [ ] Update the website
-- [ ] Contact the media
