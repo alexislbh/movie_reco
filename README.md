@@ -1,5 +1,9 @@
 # Movie recomendation
 
+| Application| Dataset Visualisation
+| :--- | ---: |
+| [App](https://share.streamlit.io/pilouliz/movie_reco/main/app.py) | [Viz](https://share.streamlit.io/oscararnoux8/projet2_wcs/main/project2_viz.py)
+
 C'est une applicationde recomendation de film, basée sur les datasets d'IMDB.
 L'application permert de proposer de 5 à 15 recomendations en fonction d'un titre de film.
 
