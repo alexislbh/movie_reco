@@ -20,13 +20,3 @@ Ce projet a été réaliser dans le cadre du Projet 2 de ma formation Data Analy
 | [Alexis Le Bihan](https://github.com/Pilouliz) |
 | [Oscar Arnoux](https://github.com/OscarArnoux8) | 
 | Julien Ripert |
-
-|| Nom |
-| :--- |
-| [Alexis Le Bihan](https://github.com/Pilouliz) |
-| [Oscar Arnoux](https://github.com/OscarArnoux8) | 
-| Julien Ripert ||# Movie recomendation
-
-C'est une applicationde recomendation de film, basée sur les datasets d'IMDB.
-L'application permert de proposer de 5 à 15 recomendations en fonction d'un titre de film.|
-
