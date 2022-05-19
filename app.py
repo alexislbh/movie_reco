@@ -37,10 +37,10 @@ imdb_movie = pd.read_pickle('./imdb_movie.pkl')
 imdb_original_language = pd.read_pickle('./imdb_original_language.pkl')
 imdb = pd.merge(imdb_movie, imdb_original_language, how="left", on=["tconst"])
 
-#datasets_name = {'Actors': pd.read_pickle('./imdb_actors.pkl'),
-#                'Directors':pd.read_pickle('./imdb_directors.pkl'),
-#                'Genres': pd.read_pickle('./imdb_genres.pkl'),
-#                'Keyword': pd.read_pickle('./imdb_movie_keyword.pkl')}
+datasets_name = {'Actors': pd.read_pickle('./imdb_actors.pkl'),
+                'Directors':pd.read_pickle('./imdb_directors.pkl'),
+                'Genres': pd.read_pickle('./imdb_genres.pkl'),
+                'Keyword': pd.read_pickle('./imdb_movie_keyword.pkl')}
 
 imdb_actors = pd.read_pickle('./imdb_actors.pkl')
 imdb_directors = pd.read_pickle('./imdb_directors.pkl')
@@ -50,20 +50,20 @@ imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
 
 
 ### Fonction activation dataset
-#def set_dataset(name):
-#  global imdb
-#  global setting_name
-#  global settings
-#  global setting_algo
-#  global datasets_name
-#  if name:
-#    imdb = pd.merge(imdb, datasets_name[name], how="left", on=["tconst"])
-#    setting_name.append(name)
-#    settings.append(setting_algo[name])
-#  else:
-#    if name in setting_name:
-#      setting_name.remove(name)
-#      settings.remove(setting_algo[name])
+def set_dataset(name):
+  global imdb
+  global setting_name
+  global settings
+  global setting_algo
+  global datasets_name
+  if name:
+    imdb = pd.merge(imdb, datasets_name[name], how="left", on=["tconst"])
+    setting_name.append(name)
+    settings.append(setting_algo[name])
+  else:
+    if name in setting_name:
+      setting_name.remove(name)
+      settings.remove(setting_algo[name])
 
 
 ### réglages des poids par defauts
@@ -86,7 +86,7 @@ with st.sidebar:
   Directors = st.checkbox('Réalisateurs')
   Keyword = st.checkbox('Mots-clés')
   
-  #set_dataset([*datasets_name][3])
+  set_dataset([*datasets_name][2])
    
   #def set_dataset(name)
   #   if info:
@@ -116,15 +116,15 @@ with st.sidebar:
     if 'Directors' in setting_name:
       setting_name.remove('Directors')
       settings.remove(setting_algo['Directors'])
-  if Genres:
-    imdb_genres = pd.read_pickle('./imdb_genres.pkl')
-    imdb = pd.merge(imdb, imdb_genres, how="left", on=["tconst"])
-    setting_name.append('Genres')
-    settings.append(setting_algo['Genres'])
-  else:
-    if 'Genres' in setting_name:
-      setting_name.remove('Genres')
-      settings.remove(setting_algo['Genres'])
+#  if Genres:
+#    imdb_genres = pd.read_pickle('./imdb_genres.pkl')
+#    imdb = pd.merge(imdb, imdb_genres, how="left", on=["tconst"])
+#    setting_name.append('Genres')
+#    settings.append(setting_algo['Genres'])
+#  else:
+#    if 'Genres' in setting_name:
+#      setting_name.remove('Genres')
+#      settings.remove(setting_algo['Genres'])
   if Keyword:
     imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
     imdb = pd.merge(imdb, imdb_movie_keyword, how="left", on=["tconst"])
