@@ -91,9 +91,9 @@ with st.sidebar:
   Keyword = st.checkbox('Mots-clés')
   
   if Genres:
-    set_dataset([*datasets_name][2])
+    get_dataset([*datasets_name][2])
   else:
-    set_dataset([*datasets_name][2])
+    drop_dataset([*datasets_name][2])
 
 
   #def set_dataset(name)
