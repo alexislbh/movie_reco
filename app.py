@@ -32,10 +32,32 @@ st.title("Recommandation de films")
 
 st.subheader('Option : Ajuster les poids')
 
-### Charger les datasets de base
+### Datasets
 imdb_movie = pd.read_pickle('./imdb_movie.pkl')
 imdb_original_language = pd.read_pickle('./imdb_original_language.pkl')
 imdb = pd.merge(imdb_movie, imdb_original_language, how="left", on=["tconst"])
+
+imdb_actors = pd.read_pickle('./imdb_actors.pkl')
+imdb_directors = pd.read_pickle('./imdb_directors.pkl')
+imdb_genres = pd.read_pickle('./imdb_genres.pkl')
+imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
+
+datasets_name = {'Actors':'imdb_actors',
+                'Directors':'imdb_directors',
+                'Genres':'imdb_genres',
+                'Keyword':'imdb_movie_keyword'}
+
+### Fonction activation dataset
+def set_dataset(name)
+  if name:
+  imdb = pd.merge(imdb, datasets_name[name], how="left", on=["tconst"])
+  setting_name.append(name)
+  settings.append(setting_algo[name])
+  else:
+    if name in setting_name:
+      setting_name.remove(name)
+      settings.remove(setting_algo[name])
+
 
 ### réglages des poids par defauts
 setting_name = ['Num Vote','Year','Rating','Region']
@@ -56,8 +78,10 @@ with st.sidebar:
   Actors = st.checkbox('Acteurs')
   Directors = st.checkbox('Réalisateurs')
   Keyword = st.checkbox('Mots-clés')
-#Actors = pd.read_pickle('./imdb_actors.pkl')
-  #def set_algo(info)
+  
+  set_dataset([*datasets_name][0])
+   
+  #def set_dataset(name)
   #   if info:
   #  imdb = pd.merge(imdb, info, how="left", on=["tconst"])
   #  setting_name.append('info')
@@ -66,7 +90,7 @@ with st.sidebar:
   #  if 'info' in setting_name:
   #    setting_name.remove('info')
   #    settings.remove(setting_algo['info'])
-
+'''
   if Actors:
     imdb_actors = pd.read_pickle('./imdb_actors.pkl')
     imdb = pd.merge(imdb, imdb_actors, how="left", on=["tconst"])
@@ -103,7 +127,7 @@ with st.sidebar:
     if 'Keyword' in setting_name:
       setting_name.remove('Keyword')
       settings.remove(setting_algo['Keyword'])
-
+'''
 ### Récuperer les informations depuis OMDB API
 def get_OMDB(movieID):
   OMDB = requests.get('http://www.omdbapi.com/?i='+ movieID + '&apikey=' + st.secrets["key"]).json()
