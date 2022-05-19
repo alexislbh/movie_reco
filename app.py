@@ -48,7 +48,7 @@ datasets_name = {'Actors':'imdb_actors',
                 'Keyword':'imdb_movie_keyword'}
 
 ### Fonction activation dataset
-def set_dataset(name)
+def set_dataset(name):
   if name:
   imdb = pd.merge(imdb, datasets_name[name], how="left", on=["tconst"])
   setting_name.append(name)
@@ -79,7 +79,7 @@ with st.sidebar:
   Directors = st.checkbox('Réalisateurs')
   Keyword = st.checkbox('Mots-clés')
   
-  set_dataset([*datasets_name][0])
+  set_dataset([*datasets_name][3])
    
   #def set_dataset(name)
   #   if info:
