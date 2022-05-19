@@ -49,6 +49,10 @@ datasets_name = {'Actors':'imdb_actors',
 
 ### Fonction activation dataset
 def set_dataset(name):
+  global imdb
+  global setting_name
+  global settings
+  global setting_algo
   if name:
     imdb = pd.merge(imdb, datasets_name[name], how="left", on=["tconst"])
     setting_name.append(name)
