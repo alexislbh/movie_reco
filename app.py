@@ -44,7 +44,7 @@ datasets_name = {'Actors': pd.read_pickle('./imdb_actors.pkl'),
 
 imdb_actors = pd.read_pickle('./imdb_actors.pkl')
 imdb_directors = pd.read_pickle('./imdb_directors.pkl')
-imdb_genres = pd.read_pickle('./imdb_genres.pkl')
+#imdb_genres = pd.read_pickle('./imdb_genres.pkl')
 imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
 
 
