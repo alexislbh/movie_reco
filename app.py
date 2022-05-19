@@ -50,20 +50,24 @@ imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
 
 
 ### Fonction activation dataset
-def set_dataset(name):
+def get_dataset(name):
   global imdb
   global setting_name
   global settings
   global setting_algo
   global datasets_name
-  if name:
-    imdb = pd.merge(imdb, datasets_name[name], how="left", on=["tconst"])
-    setting_name.append(name)
-    settings.append(setting_algo[name])
-  else:
-    if name in setting_name:
-      setting_name.remove(name)
-      settings.remove(setting_algo[name])
+  imdb = pd.merge(imdb, datasets_name[name], how="left", on=["tconst"])
+  setting_name.append(name)
+  settings.append(setting_algo[name])
+
+### Fonction désactivation dataset
+def drop_dataset(name):
+  global setting_name
+  global settings
+  global setting_algo
+  if name in setting_name:
+    setting_name.remove(name)
+    settings.remove(setting_algo[name])
 
 
 ### réglages des poids par defauts
@@ -86,8 +90,12 @@ with st.sidebar:
   Directors = st.checkbox('Réalisateurs')
   Keyword = st.checkbox('Mots-clés')
   
-  set_dataset([*datasets_name][2])
-   
+  if Genres:
+    set_dataset([*datasets_name][2])
+  else:
+    set_dataset([*datasets_name][2])
+
+
   #def set_dataset(name)
   #   if info:
   #  imdb = pd.merge(imdb, info, how="left", on=["tconst"])
