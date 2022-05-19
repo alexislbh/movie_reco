@@ -37,15 +37,17 @@ imdb_movie = pd.read_pickle('./imdb_movie.pkl')
 imdb_original_language = pd.read_pickle('./imdb_original_language.pkl')
 imdb = pd.merge(imdb_movie, imdb_original_language, how="left", on=["tconst"])
 
+datasets_name = {'Actors':'imdb_actors',
+                'Directors':'imdb_directors',
+                'Genres':'imdb_genres',
+                'Keyword':'imdb_movie_keyword'}
+
 imdb_actors = pd.read_pickle('./imdb_actors.pkl')
 imdb_directors = pd.read_pickle('./imdb_directors.pkl')
 imdb_genres = pd.read_pickle('./imdb_genres.pkl')
 imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
 
-datasets_name = {'Actors':'imdb_actors',
-                'Directors':'imdb_directors',
-                'Genres':'imdb_genres',
-                'Keyword':'imdb_movie_keyword'}
+
 
 ### Fonction activation dataset
 def set_dataset(name):
@@ -53,6 +55,7 @@ def set_dataset(name):
   global setting_name
   global settings
   global setting_algo
+  global datasets_name
   if name:
     imdb = pd.merge(imdb, datasets_name[name], how="left", on=["tconst"])
     setting_name.append(name)
