@@ -42,13 +42,6 @@ datasets_name = {'Actors': pd.read_pickle('./imdb_actors.pkl'),
                 'Genres': pd.read_pickle('./imdb_genres.pkl'),
                 'Keyword': pd.read_pickle('./imdb_movie_keyword.pkl')}
 
-imdb_actors = pd.read_pickle('./imdb_actors.pkl')
-imdb_directors = pd.read_pickle('./imdb_directors.pkl')
-#imdb_genres = pd.read_pickle('./imdb_genres.pkl')
-imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
-
-
-
 ### Fonction activation dataset
 def get_dataset(name):
   global imdb
@@ -94,6 +87,18 @@ with st.sidebar:
     get_dataset('Genres')
   else:
     drop_dataset('Genres')
+  if Actors:
+    get_dataset('Actors')
+  else:
+    drop_dataset('Actors')
+  if Directors:
+    get_dataset('Directors')
+  else:
+    drop_dataset('Directors')
+  if Keyword:
+    get_dataset('Keyword')
+  else:
+    drop_dataset('Keyword')
 
 
   #def set_dataset(name)
