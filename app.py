@@ -90,10 +90,10 @@ with st.sidebar:
   Directors = st.checkbox('Réalisateurs')
   Keyword = st.checkbox('Mots-clés')
   
-  if [*datasets_name][2]:
-    get_dataset([*datasets_name][2])
+  if Genres:
+    get_dataset('Genres')
   else:
-    drop_dataset([*datasets_name][2])
+    drop_dataset('Genres')
 
 
   #def set_dataset(name)
