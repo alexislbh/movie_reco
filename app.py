@@ -37,10 +37,10 @@ imdb_movie = pd.read_pickle('./imdb_movie.pkl')
 imdb_original_language = pd.read_pickle('./imdb_original_language.pkl')
 imdb = pd.merge(imdb_movie, imdb_original_language, how="left", on=["tconst"])
 
-datasets_name = {'Actors':'imdb_actors',
-                'Directors':'imdb_directors',
-                'Genres':'imdb_genres',
-                'Keyword':'imdb_movie_keyword'}
+datasets_name = {'Actors': pd.read_pickle('./imdb_actors.pkl'),
+                'Directors':pd.read_pickle('./imdb_directors.pkl'),
+                'Genres': pd.read_pickle('./imdb_genres.pkl'),
+                'Keyword': pd.read_pickle('./imdb_movie_keyword.pkl')}
 
 imdb_actors = pd.read_pickle('./imdb_actors.pkl')
 imdb_directors = pd.read_pickle('./imdb_directors.pkl')
