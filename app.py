@@ -90,7 +90,7 @@ with st.sidebar:
   Directors = st.checkbox('Réalisateurs')
   Keyword = st.checkbox('Mots-clés')
   
-  if Genres:
+  if [*datasets_name][2]:
     get_dataset([*datasets_name][2])
   else:
     drop_dataset([*datasets_name][2])
@@ -106,24 +106,24 @@ with st.sidebar:
   #    setting_name.remove('info')
   #    settings.remove(setting_algo['info'])
 
-  if Actors:
-    imdb_actors = pd.read_pickle('./imdb_actors.pkl')
-    imdb = pd.merge(imdb, imdb_actors, how="left", on=["tconst"])
-    setting_name.append('Actors')
-    settings.append(setting_algo['Actors'])
-  else:
-    if 'Actors' in setting_name:
-      setting_name.remove('Actors')
-      settings.remove(setting_algo['Actors'])
-  if Directors:
-    imdb_directors = pd.read_pickle('./imdb_directors.pkl')
-    imdb = pd.merge(imdb, imdb_directors, how="left", on=["tconst"])
-    setting_name.append('Directors')
-    settings.append(setting_algo['Directors'])
-  else:
-    if 'Directors' in setting_name:
-      setting_name.remove('Directors')
-      settings.remove(setting_algo['Directors'])
+#  if Actors:
+#    imdb_actors = pd.read_pickle('./imdb_actors.pkl')
+#    imdb = pd.merge(imdb, imdb_actors, how="left", on=["tconst"])
+#    setting_name.append('Actors')
+#    settings.append(setting_algo['Actors'])
+#  else:
+#    if 'Actors' in setting_name:
+#      setting_name.remove('Actors')
+#      settings.remove(setting_algo['Actors'])
+#  if Directors:
+#    imdb_directors = pd.read_pickle('./imdb_directors.pkl')
+#    imdb = pd.merge(imdb, imdb_directors, how="left", on=["tconst"])
+#    setting_name.append('Directors')
+#    settings.append(setting_algo['Directors'])
+#  else:
+#    if 'Directors' in setting_name:
+#      setting_name.remove('Directors')
+#      settings.remove(setting_algo['Directors'])
 #  if Genres:
 #    imdb_genres = pd.read_pickle('./imdb_genres.pkl')
 #    imdb = pd.merge(imdb, imdb_genres, how="left", on=["tconst"])
@@ -133,15 +133,15 @@ with st.sidebar:
 #    if 'Genres' in setting_name:
 #      setting_name.remove('Genres')
 #      settings.remove(setting_algo['Genres'])
-  if Keyword:
-    imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
-    imdb = pd.merge(imdb, imdb_movie_keyword, how="left", on=["tconst"])
-    setting_name.append('Keyword')
-    settings.append(setting_algo['Keyword'])
-  else:
-    if 'Keyword' in setting_name:
-      setting_name.remove('Keyword')
-      settings.remove(setting_algo['Keyword'])
+#  if Keyword:
+#    imdb_movie_keyword = pd.read_pickle('./imdb_movie_keyword.pkl')
+#    imdb = pd.merge(imdb, imdb_movie_keyword, how="left", on=["tconst"])
+#    setting_name.append('Keyword')
+#    settings.append(setting_algo['Keyword'])
+#  else:
+#    if 'Keyword' in setting_name:
+#      setting_name.remove('Keyword')
+#      settings.remove(setting_algo['Keyword'])
 
 ### Récuperer les informations depuis OMDB API
 def get_OMDB(movieID):
