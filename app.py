@@ -16,7 +16,7 @@ st.set_page_config(
      layout="wide",
      initial_sidebar_state="expanded")
 
-st.title("Recommandation de movies")
+st.title("Recommandation de films")
 
 st.subheader('Option : Ajuster les poids')
 
