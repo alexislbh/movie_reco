@@ -166,7 +166,7 @@ reco_val = slider_val + 1
 
 ### --------------  Réponse utilisateur --------------- ###
 
-ans = st.selectbox ('Votre film préféré', imdb.titleView, index=21301)
+ans = st.selectbox ('Ecrivez votre film préféré (Auto-complétion)', imdb.titleView, index=21301)
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### - - - - - - - - - - - Affichage - - - - - - - - - - ###
@@ -209,4 +209,4 @@ for lines in range(line_range):
 
 ### ---------------------- Footer --------------------- ###
 
-st.markdown("<h1 style='text-align: center;font-size:18px;'> JAO Data : Alexis Le Bihan, Julien Reppert, Oscar Arnoux</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;font-size:18px;'>Alexis Le Bihan, Julien Reppert, Oscar Arnoux</h1>", unsafe_allow_html=True)
