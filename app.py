@@ -167,7 +167,6 @@ reco_val = slider_val + 1
 
 ### --------------  Réponse utilisateur --------------- ###
 
-@st.cache
 ans = st.selectbox ('Ecrivez votre film préféré (Auto-complétion)', imdb.titleView, index=21301)
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
