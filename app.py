@@ -156,8 +156,8 @@ with st.sidebar:
 ### ---- Regales de la gestion des poids utilisateurs 'Front End' ---- ###
 
 cols = st.columns(len(setting_name))
-@st.cache
 for i in range(len(setting_name)):
+   @st.cache
    settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.3)
    st.write(settings[i])
 
