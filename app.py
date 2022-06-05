@@ -157,7 +157,6 @@ with st.sidebar:
 
 cols = st.columns(len(setting_name))
 for i in range(len(setting_name)):
-   @st.cache
    settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.3)
    st.write(settings[i])
 
