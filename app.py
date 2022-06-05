@@ -155,9 +155,11 @@ with st.sidebar:
 
 ### ---- Regales de la gestion des poids utilisateurs 'Front End' ---- ###
 
+@st.cache
 cols = st.columns(len(setting_name))
 for i in range(len(setting_name)):
    settings[i] = cols[i].number_input(setting_name[i],value=settings[i],step=0.3)
+   st.write(settings[i])
 
 ### ----  Slider choix du nombre de recommendation ---- ###
  
@@ -166,6 +168,7 @@ reco_val = slider_val + 1
 
 ### --------------  Réponse utilisateur --------------- ###
 
+@st.cache
 ans = st.selectbox ('Ecrivez votre film préféré (Auto-complétion)', imdb.titleView, index=21301)
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
