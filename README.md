@@ -21,6 +21,6 @@ Ce projet a été réaliser dans le cadre du Projet 2 de ma formation Data Analy
 
 | Nom |
 | :--- |
-| [Alexis Le Bihan](https://github.com/Pilouliz) |
-| [Oscar Arnoux](https://github.com/OscarArnoux8) | 
-| Julien Ripert |
+| [Alexis](https://github.com/alexislbh) |
+| [Oscar](https://github.com/OscarArnoux8) | 
+| Julien |
